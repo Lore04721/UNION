@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Studente - Union</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="logo" onclick="location.href='index.html'">UNION</div>
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#charts">Dati Dispersione</a></li>
+                    <li><a href="index.html#impact">Il Nostro Impatto</a></li>
+                    <li><a href="index.html#services">Servizi</a></li>
+                    <li><a href="index.html#news">News IA</a></li>
+                    <li><a href="index.html#survey">Sondaggi</a></li>
+                    <li><a href="index.html#contact">Contatti</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="student-login.html" class="btn btn-outline">Login</a>
+                    <a href="student-login.html" class="btn btn-primary">Registrati</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Login Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Accesso Studente</h1>
+            <p>Accedi ai materiali della tua scuola, utilizza gli strumenti AI per studiare meglio e monitora i tuoi progressi</p>
+            
+            <div class="auth-content" style="max-width: 500px; margin: 2rem auto;">
+                <div class="form-group">
+                    <label for="studentEmail">Email</label>
+                    <input type="email" id="studentEmail" class="form-control" placeholder="la.tua.email@scuola.edu.it">
+                </div>
+                <div class="form-group">
+                    <label for="studentPassword">Password</label>
+                    <input type="password" id="studentPassword" class="form-control" placeholder="La tua password">
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="rememberStudent">
+                    <label for="rememberStudent">Ricordami</label>
+                </div>
+                <button class="btn btn-primary" style="width: 100%; margin: 1rem 0;" onclick="performStudentLogin()">Accedi</button>
+                
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <p>Non hai un account? <a href="#" onclick="showRegistrationForm()">Registrati come studente</a></p>
+                    <p><a href="#">Password dimenticata?</a></p>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="student-dashboard.html" class="btn btn-outline">Demo Dashboard Studente</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form (Hidden by default) -->
+    <div id="registrationForm" style="display: none; max-width: 800px; margin: 0 auto; padding: 2rem;">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Registrazione Studente</h2>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="regStudentName">Nome</label>
+                <input type="text" id="regStudentName" class="form-control" placeholder="Il tuo nome">
+            </div>
+            <div class="form-group">
+                <label for="regStudentSurname">Cognome</label>
+                <input type="text" id="regStudentSurname" class="form-control" placeholder="Il tuo cognome">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="regStudentEmail">Email</label>
+            <input type="email" id="regStudentEmail" class="form-control" placeholder="la.tua.email@scuola.edu.it">
+        </div>
+        
+        <div class="form-group">
+            <label for="regStudentSchool">Scuola/Istituto</label>
+            <select id="regStudentSchool" class="form-control">
+                <option value="">Seleziona la tua scuola</option>
+                <option value="liceo-scientifico">Liceo Scientifico A. Einstein</option>
+                <option value="istituto-tecnico">Istituto Tecnico G. Marconi</option>
+                <option value="liceo-classico">Liceo Classico Dante Alighieri</option>
+                <option value="istituto-professionale">Istituto Professionale L. Da Vinci</option>
+            </select>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="regStudentClass">Classe</label>
+                <input type="text" id="regStudentClass" class="form-control" placeholder="Es. 3A">
+            </div>
+            <div class="form-group">
+                <label for="regStudentSection">Sezione</label>
+                <input type="text" id="regStudentSection" class="form-control" placeholder="Es. Scientifico">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="regStudentPassword">Password</label>
+            <input type="password" id="regStudentPassword" class="form-control" placeholder="Crea una password sicura">
+        </div>
+        
+        <div class="form-group">
+            <label for="regStudentConfirmPassword">Conferma Password</label>
+            <input type="password" id="regStudentConfirmPassword" class="form-control" placeholder="Ripeti la password">
+        </div>
+        
+        <div class="checkbox-group">
+            <input type="checkbox" id="regStudentParentConsent" required>
+            <label for="regStudentParentConsent">Dichiaro di aver ottenuto il consenso dei miei genitori/tutori</label>
+        </div>
+        
+        <div class="checkbox-group">
+            <input type="checkbox" id="regStudentPrivacyPolicy" required>
+            <label for="regStudentPrivacyPolicy">Accetto i termini di servizio e la privacy policy</label>
+        </div>
+        
+        <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="performStudentRegistration()">Completa Registrazione</button>
+        
+        <div style="text-align: center; margin-top: 1rem;">
+            <button class="btn btn-outline" onclick="hideRegistrationForm()">Torna al Login</button>
+        </div>
+    </div>
+
+    <script>
+        function performStudentLogin() {
+            // Simula il login
+            alert('Login effettuato con successo! Reindirizzamento alla dashboard...');
+            window.location.href = 'student-dashboard.html';
+        }
+        
+        function showRegistrationForm() {
+            document.getElementById('registrationForm').style.display = 'block';
+        }
+        
+        function hideRegistrationForm() {
+            document.getElementById('registrationForm').style.display = 'none';
+        }
+        
+        function performStudentRegistration() {
+            // Simula la registrazione
+            alert('Registrazione completata! Ora puoi accedere.');
+            hideRegistrationForm();
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

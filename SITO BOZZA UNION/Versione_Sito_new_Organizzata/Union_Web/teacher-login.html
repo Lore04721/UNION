@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Docente - Union</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="logo" onclick="location.href='index.html'">UNION</div>
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#charts">Dati Dispersione</a></li>
+                    <li><a href="index.html#impact">Il Nostro Impatto</a></li>
+                    <li><a href="index.html#services">Servizi</a></li>
+                    <li><a href="index.html#news">News IA</a></li>
+                    <li><a href="index.html#survey">Sondaggi</a></li>
+                    <li><a href="index.html#contact">Contatti</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="teacher-login.html" class="btn btn-outline">Login</a>
+                    <a href="teacher-login.html" class="btn btn-primary">Registrati</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Login Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Accesso Docente</h1>
+            <p>Accedi alla tua dashboard per gestire classi, creare contenuti e monitorare i progressi degli studenti</p>
+            
+            <div class="auth-content" style="max-width: 500px; margin: 2rem auto;">
+                <div class="form-group">
+                    <label for="teacherEmail">Email istituzionale</label>
+                    <input type="email" id="teacherEmail" class="form-control" placeholder="nome.cognome@scuola.edu.it">
+                </div>
+                <div class="form-group">
+                    <label for="teacherPassword">Password</label>
+                    <input type="password" id="teacherPassword" class="form-control" placeholder="La tua password">
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="rememberTeacher">
+                    <label for="rememberTeacher">Ricordami</label>
+                </div>
+                <button class="btn btn-primary" style="width: 100%; margin: 1rem 0;" onclick="performTeacherLogin()">Accedi</button>
+                
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <p>Non hai un account? <a href="#" onclick="showRegistrationForm()">Registrati come docente</a></p>
+                    <p><a href="#">Password dimenticata?</a></p>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="teacher-dashboard.html" class="btn btn-outline">Demo Dashboard Docente</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form (Hidden by default) -->
+    <div id="registrationForm" style="display: none; max-width: 800px; margin: 0 auto; padding: 2rem;">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Registrazione Docente</h2>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="regTeacherName">Nome</label>
+                <input type="text" id="regTeacherName" class="form-control" placeholder="Il tuo nome">
+            </div>
+            <div class="form-group">
+                <label for="regTeacherSurname">Cognome</label>
+                <input type="text" id="regTeacherSurname" class="form-control" placeholder="Il tuo cognome">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="regTeacherEmail">Email istituzionale</label>
+            <input type="email" id="regTeacherEmail" class="form-control" placeholder="nome.cognome@scuola.edu.it">
+        </div>
+        
+        <div class="form-group">
+            <label for="regTeacherSchool">Scuola/Istituto</label>
+            <select id="regTeacherSchool" class="form-control">
+                <option value="">Seleziona la tua scuola</option>
+                <option value="liceo-scientifico">Liceo Scientifico A. Einstein</option>
+                <option value="istituto-tecnico">Istituto Tecnico G. Marconi</option>
+                <option value="liceo-classico">Liceo Classico Dante Alighieri</option>
+                <option value="istituto-professionale">Istituto Professionale L. Da Vinci</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="regTeacherSubjects">Materie insegnate</label>
+            <select id="regTeacherSubjects" class="form-control" multiple>
+                <option value="matematica">Matematica</option>
+                <option value="italiano">Italiano</option>
+                <option value="scienze">Scienze</option>
+                <option value="storia">Storia</option>
+                <option value="inglese">Inglese</option>
+                <option value="informatica">Informatica</option>
+            </select>
+            <small style="color: var(--gray);">Tieni premuto Ctrl per selezionare più materie</small>
+        </div>
+        
+        <div class="form-group">
+            <label for="regTeacherPassword">Password</label>
+            <input type="password" id="regTeacherPassword" class="form-control" placeholder="Crea una password sicura">
+        </div>
+        
+        <div class="form-group">
+            <label for="regTeacherConfirmPassword">Conferma Password</label>
+            <input type="password" id="regTeacherConfirmPassword" class="form-control" placeholder="Ripeti la password">
+        </div>
+        
+        <div class="checkbox-group">
+            <input type="checkbox" id="regTeacherPrivacyPolicy" required>
+            <label for="regTeacherPrivacyPolicy">Accetto i termini di servizio e la privacy policy</label>
+        </div>
+        
+        <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="performTeacherRegistration()">Completa Registrazione</button>
+        
+        <div style="text-align: center; margin-top: 1rem;">
+            <button class="btn btn-outline" onclick="hideRegistrationForm()">Torna al Login</button>
+        </div>
+    </div>
+
+    <script>
+        function performTeacherLogin() {
+            // Simula il login
+            alert('Login effettuato con successo! Reindirizzamento alla dashboard...');
+            window.location.href = 'teacher-dashboard.html';
+        }
+        
+        function showRegistrationForm() {
+            document.getElementById('registrationForm').style.display = 'block';
+        }
+        
+        function hideRegistrationForm() {
+            document.getElementById('registrationForm').style.display = 'none';
+        }
+        
+        function performTeacherRegistration() {
+            // Simula la registrazione
+            alert('Registrazione completata! Ora puoi accedere.');
+            hideRegistrationForm();
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

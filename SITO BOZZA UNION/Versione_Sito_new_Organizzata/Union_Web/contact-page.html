@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatti - Union</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="logo" onclick="location.href='index.html'">UNION</div>
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#charts">Dati Dispersione</a></li>
+                    <li><a href="index.html#impact">Il Nostro Impatto</a></li>
+                    <li><a href="index.html#services">Servizi</a></li>
+                    <li><a href="index.html#news">News IA</a></li>
+                    <li><a href="index.html#survey">Sondaggi</a></li>
+                    <li><a href="index.html#contact">Contatti</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="teacher-login.html" class="btn btn-outline">Login</a>
+                    <a href="teacher-login.html" class="btn btn-primary">Registrati</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contact Page -->
+    <div class="dashboard active">
+        <div class="dashboard-header">
+            <div class="dashboard-header-content">
+                <h1>📧 Contattaci</h1>
+                <p>Hai bisogno di aiuto? Scrivici e ti risponderemo al più presto</p>
+            </div>
+        </div>
+        <div class="dashboard-content">
+            <div class="content-area">
+                <div class="section-header">
+                    <h2>Supporto Union</h2>
+                    <p class="subtitle">Inviaci una segnalazione o una richiesta di supporto</p>
+                </div>
+
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label for="contact-name">Nome *</label>
+                        <input type="text" id="contact-name" class="form-control" placeholder="Il tuo nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-surname">Cognome *</label>
+                        <input type="text" id="contact-surname" class="form-control" placeholder="Il tuo cognome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email *</label>
+                        <input type="email" id="contact-email" class="form-control" placeholder="la.tua.email@esempio.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-subject">Oggetto *</label>
+                        <select id="contact-subject" class="form-control" required>
+                            <option value="">Seleziona un oggetto...</option>
+                            <option value="technical">Problema tecnico</option>
+                            <option value="account">Problema account</option>
+                            <option value="billing">Fatturazione</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="other">Altro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Messaggio *</label>
+                        <textarea id="contact-message" class="form-control" rows="5" placeholder="Descrivi il problema o la richiesta..." required></textarea>
+                    </div>
+                    <button class="btn btn-primary" onclick="submitContactForm()">Invia Messaggio</button>
+                </div>
+
+                <div id="contact-thanks" style="display: none; text-align: center; padding: 2rem;">
+                    <h2>Grazie per averci contattato</h2>
+                    <p>Il tuo messaggio è stato inviato. Ti risponderemo all'indirizzo email fornito al più presto.</p>
+                    <p>Il team di Union</p>
+                    <button class="btn btn-primary" onclick="location.href='index.html'">Torna alla Home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function submitContactForm() {
+            // Qui in una app reale invieremmo i dati al server
+            document.querySelector('.contact-form').style.display = 'none';
+            document.getElementById('contact-thanks').style.display = 'block';
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

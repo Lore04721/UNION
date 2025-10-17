@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Union - Piattaforma Digitale per l'Apprendimento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="logo" onclick="location.href='index.html'">UNION</div>
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#charts">Dati Dispersione</a></li>
+                    <li><a href="#impact">Il Nostro Impatto</a></li>
+                    <li><a href="#services">Servizi</a></li>
+                    <li><a href="#news">News IA</a></li>
+                    <li><a href="#survey">Sondaggi</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="teacher-login.html" class="btn btn-outline">Login</a>
+                    <a href="teacher-login.html" class="btn btn-primary">Registrati</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Home Page -->
+    <div id="homepage">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Rivoluziona l'Apprendimento con Union</h1>
+                <p>La piattaforma innovativa che sta trasformando l'educazione in Italia, combattendo la dispersione scolastica attraverso l'intelligenza artificiale</p>
+
+                <div class="cta-section">
+                    <div class="cta-card">
+                        <h3>👨‍🏫 Sei un Docente?</h3>
+                        <p>Accedi alla dashboard per creare lezioni interattive, generare mappe concettuali e molto altro</p>
+                        <a href="teacher-login.html" class="btn btn-primary">Accedi Docente</a>
+                    </div>
+                    <div class="cta-card">
+                        <h3>🎓 Sei uno Studente?</h3>
+                        <p>Accedi ai materiali didattici della tua scuola e utilizza gli strumenti AI per studiare meglio</p>
+                        <a href="student-login.html" class="btn btn-primary">Accedi Studente</a>
+                    </div>
+                    <div class="cta-card">
+                        <h3>👪 Sei un Genitore?</h3>
+                        <p>Monitora i progressi dei tuoi figli e rimani aggiornato sul loro rendimento</p>
+                        <a href="parent-login.html" class="btn btn-primary">Accedi Genitore</a>
+                    </div>
+                    <div class="cta-card">
+                        <h3>👤 Nuovo Utente?</h3>
+                        <p>Organizza appunti, registra audio, genera quiz e sfrutta l'AI per l'apprendimento personale</p>
+                        <a href="generic-login.html" class="btn btn-primary">Inizia Ora</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partner Section -->
+        <main>
+            <section>
+                <div class="partner-section">
+                    <h3>Partner Tecnologico Ufficiale</h3>
+                    <div class="partner-logo-container">
+                        <a href="https://www.codebase.com" target="_blank" class="partner-logo-link">
+                            <div class="partner-logo-text">Codebase</div>
+                        </a>
+                    </div>
+                    <p style="margin-top: 1.5rem; color: var(--gray);">Collaboriamo con Codebase per lo sviluppo di soluzioni AI all'avanguardia</p>
+                </div>
+            </section>
+
+            <!-- AI News Section -->
+            <section class="news-section" id="news">
+                <div class="section-header">
+                    <h2>📰 IA e Apprendimento: Le Ultime Novità</h2>
+                    <p class="subtitle">Scopri come l'intelligenza artificiale sta rivoluzionando il mondo dell'educazione</p>
+                </div>
+
+                <div class="news-grid">
+                    <div class="news-card">
+                        <div class="news-image">🤖</div>
+                        <div class="news-content">
+                            <div class="news-date">15 Ottobre 2025</div>
+                            <h3 class="news-title">L'IA come Supporto, non Sostituzione</h3>
+                            <p class="news-excerpt">Scopri perché l'intelligenza artificiale dovrebbe essere vista come uno strumento di supporto per docenti e studenti, non come un sostituto dell'insegnamento tradizionale.</p>
+                            <a href="#" class="btn btn-outline">Leggi di più</a>
+                        </div>
+                    </div>
+
+                    <div class="news-card">
+                        <div class="news-image">🎯</div>
+                        <div class="news-content">
+                            <div class="news-date">10 Ottobre 2025</div>
+                            <h3 class="news-title">Apprendimento Personalizzato con AI</h3>
+                            <p class="news-excerpt">Come gli algoritmi di machine learning stanno creando percorsi di apprendimento unici per ogni studente, adattandosi al loro ritmo e stile di apprendimento.</p>
+                            <a href="#" class="btn btn-outline">Leggi di più</a>
+                        </div>
+                    </div>
+
+                    <div class="news-card">
+                        <div class="news-image">📊</div>
+                        <div class="news-content">
+                            <div class="news-date">5 Ottobre 2025</div>
+                            <h3 class="news-title">Analisi Predittiva nella Scuola</h3>
+                            <p class="news-excerpt">L'uso dell'IA per identificare precocemente gli studenti a rischio di abbandono scolastico e intervenire tempestivamente con supporto personalizzato.</p>
+                            <a href="#" class="btn btn-outline">Leggi di più</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3D Charts Dispersione -->
+            <section class="charts-3d-section" id="charts">
+                <div class="charts-3d-content">
+                    <div class="charts-3d-header">
+                        <h2>📊 Dispersione Scolastica in Italia: Dati in 3D</h2>
+                        <p>Grafici interattivi che mostrano la rivoluzione in corso nell'educazione italiana</p>
+                    </div>
+
+                    <div class="charts-grid">
+                        <!-- Bar Chart 3D -->
+                        <div class="chart-3d-container">
+                            <div class="chart-title">Evoluzione Dispersione Scolastica (2021-2025)</div>
+                            <div class="bar-chart-3d">
+                                <div class="bar-3d">
+                                    <div class="bar-front" style="--bar-height: 254px;">
+                                        <div class="bar-top"></div>
+                                        <div class="bar-side"></div>
+                                    </div>
+                                    <div class="bar-value">12.7%</div>
+                                    <div class="bar-label">2021</div>
+                                </div>
+                                <div class="bar-3d">
+                                    <div class="bar-front" style="--bar-height: 227px;">
+                                        <div class="bar-top"></div>
+                                        <div class="bar-side"></div>
+                                    </div>
+                                    <div class="bar-value">11.5%</div>
+                                    <div class="bar-label">2022</div>
+                                </div>
+                                <div class="bar-3d">
+                                    <div class="bar-front" style="--bar-height: 207px;">
+                                        <div class="bar-top"></div>
+                                        <div class="bar-side"></div>
+                                    </div>
+                                    <div class="bar-value">10.5%</div>
+                                    <div class="bar-label">2023</div>
+                                </div>
+                                <div class="bar-3d">
+                                    <div class="bar-front" style="--bar-height: 200px;">
+                                        <div class="bar-top"></div>
+                                        <div class="bar-side"></div>
+                                    </div>
+                                    <div class="bar-value">10.1%</div>
+                                    <div class="bar-label">2024</div>
+                                </div>
+                                <div class="bar-3d">
+                                    <div class="bar-front" style="--bar-height: 196px;">
+                                        <div class="bar-top"></div>
+                                        <div class="bar-side"></div>
+                                    </div>
+                                    <div class="bar-value">9.8%</div>
+                                    <div class="bar-label">2025</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pie Chart 3D -->
+                        <div class="chart-3d-container">
+                            <div class="chart-title">Distribuzione per Grado Scolastico (2025)</div>
+                            <div class="pie-chart-3d">
+                                <div class="pie-slice-inner"></div>
+                            </div>
+                            <div style="margin-top: 2rem; color: white; text-align: center;">
+                                <div style="margin: 0.5rem 0;"><span style="color: var(--accent);">●</span> Medie (36%)</div>
+                                <div style="margin: 0.5rem 0;"><span style="color: var(--primary);">●</span> Superiori (28%)</div>
+                                <div style="margin: 0.5rem 0;"><span style="color: var(--danger);">●</span> Primarie (17%)</div>
+                                <div style="margin: 0.5rem 0;"><span style="color: var(--warning);">●</span> Università (19%)</div>
+                            </div>
+                        </div>
+
+                        <!-- Line Chart 3D -->
+                        <div class="chart-3d-container">
+                            <div class="chart-title">Studenti Salvati dall'Abbandono (migliaia)</div>
+                            <div class="line-chart-3d">
+                                <svg class="line-3d" viewBox="0 0 400 300" preserveAspectRatio="none">
+                                    <path class="line-path" d="M 0 280 L 100 240 L 200 180 L 300 100 L 400 40" />
+                                </svg>
+                                <div class="data-point" style="left: 0%; bottom: 7%;"></div>
+                                <div class="data-point" style="left: 25%; bottom: 20%;"></div>
+                                <div class="data-point" style="left: 50%; bottom: 40%;"></div>
+                                <div class="data-point" style="left: 75%; bottom: 67%;"></div>
+                                <div class="data-point" style="left: 100%; bottom: 87%;"></div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; color: white; margin-top: 1rem; font-size: 0.9rem;">
+                                <span>2021</span>
+                                <span>2022</span>
+                                <span>2023</span>
+                                <span>2024</span>
+                                <span>2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Story Section -->
+            <section id="impact">
+                <div class="story-section">
+                    <div class="story-content">
+                        <div class="story-header">
+                            <h2>Come Union Sta Rivoluzionando l'Educazione</h2>
+                            <p>La nostra missione contro la dispersione scolastica sta dando risultati straordinari</p>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number">9.8%</div>
+                                <div class="stat-label">Dispersione 2025<br>(dal 12.7% del 2021)</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">-23%</div>
+                                <div class="stat-label">Riduzione abbandono<br>in 4 anni</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">85%</div>
+                                <div class="stat-label">Studenti più coinvolti<br>con Union</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">2.5M</div>
+                                <div class="stat-label">Studenti raggiunti<br>in Italia</div>
+                            </div>
+                        </div>
+
+                        <div class="story-text">
+                            <p><strong class="highlight">La storia di Marco:</strong> Marco frequentava il terzo anno quando ha iniziato ad accumulare lacune. La frustrazione cresceva, e stava considerando l'abbandono.</p>
+
+                            <p>Poi la sua scuola ha adottato <strong class="highlight">Union</strong>. Attraverso la nostra piattaforma, Marco ha potuto accedere a <strong class="highlight">lezioni personalizzate</strong> che si adattavano al suo ritmo. I <strong class="highlight">riassunti AI</strong> lo hanno aiutato a recuperare, mentre le <strong class="highlight">mappe concettuali interattive</strong> hanno reso tutto comprensibile.</p>
+
+                            <p>Oggi Marco è al quinto anno con media dell'8 e vuole iscriversi a ingegneria. La sua è una delle <strong class="highlight">migliaia di storie di successo</strong> che Union scrive ogni giorno.</p>
+
+                            <p><strong class="highlight">Il nostro impegno:</strong> Union non è solo tecnologia, è un <strong class="highlight">ponte tra studenti e futuro</strong>. Combiniamo AI, pedagogia avanzata e collaborazione per garantire che nessuno rimanga indietro.</p>
+
+                            <p><strong class="highlight">Risultati concreti:</strong> L'Italia ha superato con un anno di anticipo l'obiettivo PNRR del 10.2%, raggiungendo il 9.8% nel 2025. Union opera in oltre 247 scuole nazionali.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section id="services">
+                <div class="section-header">
+                    <h2>I Nostri Servizi</h2>
+                    <p class="subtitle">Una suite completa di strumenti per tutti</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🗺️</div>
+                        <h3>Mappe Concettuali AI</h3>
+                        <p>Genera automaticamente mappe interattive da qualsiasi argomento per visualizzare connessioni.</p>
+                        <ul class="service-features">
+                            <li>Generazione automatica</li>
+                            <li>Personalizzazione completa</li>
+                            <li>Esportazione multi-formato</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📝</div>
+                        <h3>Riassunti Intelligenti</h3>
+                        <p>Crea riassunti efficaci con l'AI, adattati al livello di comprensione.</p>
+                        <ul class="service-features">
+                            <li>Sintesi avanzata con AI</li>
+                            <li>Livelli adattabili</li>
+                            <li>Concetti chiave evidenziati</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎯</div>
+                        <h3>Quiz Interattivi</h3>
+                        <p>Genera quiz personalizzati per testare competenze su qualsiasi argomento.</p>
+                        <ul class="service-features">
+                            <li>Generazione automatica</li>
+                            <li>Correzione istantanea</li>
+                            <li>Difficoltà adattiva</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎤</div>
+                        <h3>Registrazione Audio</h3>
+                        <p>Registra lezioni e appunti vocali con trascrizione automatica tramite AI.</p>
+                        <ul class="service-features">
+                            <li>Trascrizione in tempo reale</li>
+                            <li>Riconoscimento vocale avanzato</li>
+                            <li>Organizzazione automatica</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📊</div>
+                        <h3>Analytics & Reporting</h3>
+                        <p>Monitora progressi e identifica difficoltà per intervenire tempestivamente.</p>
+                        <ul class="service-features">
+                            <li>Monitoraggio real-time</li>
+                            <li>Previsione difficoltà</li>
+                            <li>Report personalizzati</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">💬</div>
+                        <h3>Tutor AI 24/7</h3>
+                        <p>Assistente virtuale sempre disponibile per rispondere a domande e chiarire dubbi.</p>
+                        <ul class="service-features">
+                            <li>Disponibilità continua</li>
+                            <li>Risposte contestualizzate</li>
+                            <li>Supporto multilingue</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Privacy e Sicurezza Dati -->
+            <section>
+                <div class="privacy-section">
+                    <div class="section-header">
+                        <h2>Privacy e Sicurezza dei Dati</h2>
+                        <p class="subtitle">La tua privacy è la nostra priorità assoluta</p>
+                    </div>
+                    <div class="privacy-grid">
+                        <div class="privacy-card">
+                            <h4>🔒 Crittografia End-to-End</h4>
+                            <p>Tutti i dati sono crittografati con standard militari AES-256. Nessuno, nemmeno noi, può accedere ai tuoi contenuti privati.</p>
+                        </div>
+                        <div class="privacy-card">
+                            <h4>🇪🇺 GDPR Compliant</h4>
+                            <p>Rispettiamo completamente il Regolamento Europeo sulla Protezione dei Dati. I tuoi dati rimangono in server UE.</p>
+                        </div>
+                        <div class="privacy-card">
+                            <h4>🛡️ Certificazioni ISO</h4>
+                            <p>Certificati ISO 27001 per la gestione della sicurezza delle informazioni e ISO 27018 per la privacy nel cloud.</p>
+                        </div>
+                        <div class="privacy-card">
+                            <h4>👤 Controllo Totale</h4>
+                            <p>Hai il controllo completo sui tuoi dati: visualizza, esporta o elimina qualsiasi informazione in qualsiasi momento.</p>
+                        </div>
+                        <div class="privacy-card">
+                            <h4>🚫 Zero Vendita Dati</h4>
+                            <p>Non vendiamo mai i tuoi dati a terze parti. Il nostro modello di business si basa solo sugli abbonamenti.</p>
+                        </div>
+                        <div class="privacy-card">
+                            <h4>🔐 Autenticazione Sicura</h4>
+                            <p>Autenticazione a due fattori, Single Sign-On e gestione avanzata delle sessioni per massima sicurezza.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Enhanced Survey Section -->
+            <section class="survey-section" id="survey">
+                <div class="survey-container">
+                    <div class="section-header">
+                        <h2>📊 Sondaggio Soddisfazione</h2>
+                        <p class="subtitle">La tua opinione conta! Aiutaci a migliorare l'esperienza educativa</p>
+                    </div>
+
+                    <div class="survey-progress-container">
+                        <div class="survey-progress-text">
+                            <span>Progresso</span>
+                            <span id="progressText">1/6</span>
+                        </div>
+                        <div class="survey-progress">
+                            <div class="survey-progress-bar" id="surveyProgress"></div>
+                        </div>
+                    </div>
+
+                    <div class="survey-step active" id="step1">
+                        <div class="survey-question">Qual è il tuo ruolo?</div>
+                        <div class="survey-options">
+                            <div class="survey-option" onclick="selectOption(this, 'studente')">
+                                <div class="survey-option-icon">🎓</div>
+                                <div>Studente</div>
+                            </div>
+                            <div class="survey-option" onclick="selectOption(this, 'docente')">
+                                <div class="survey-option-icon">👨‍🏫</div>
+                                <div>Docente</div>
+                            </div>
+                            <div class="survey-option" onclick="selectOption(this, 'genitore')">
+                                <div class="survey-option-icon">👪</div>
+                                <div>Genitore</div>
+                            </div>
+                            <div class="survey-option" onclick="selectOption(this, 'altro')">
+                                <div class="survey-option-icon">👤</div>
+                                <div>Altro</div>
+                            </div>
+                        </div>
+                        <div class="survey-navigation">
+                            <button class="btn btn-outline" disabled>Indietro</button>
+                            <button class="btn btn-primary" onclick="nextStep(2)">Avanti</button>
+                        </div>
+                    </div>
+
+                    <div class="survey-step" id="step2">
+                        <div class="survey-question">Quanto sei soddisfatto del tuo attuale ambiente di apprendimento?</div>
+                        <div class="survey-options">
+                            <div class="survey-option" onclick="selectOption(this, '1')">
+                                <div class="survey-option-icon">😞</div>
+                                <div>Per niente soddisfatto</div>
+                            </div>
+                            <div class="survey-option" onclick="selectOption(this, '2')">
+                                <div class="survey-option-icon">😐</div>
+                                <div>Poco soddisfatto</div>
+                            </div>
+                            <div class="survey-option" onclick="selectOption(this, '3')">
+                                <div class="survey-option-icon">😊</div>
+                                <div>Abbastanza soddisfatto</div>
+                            </div>
+                            <div class="survey-option" onclick="selectOption(this, '4')">
+                                <div class="survey-option-icon">😄</div>
+                                <div>Molto soddisfatto</div>
+                            </div>
+                            <div class="survey-option" onclick="selectOption(this, '5')">
+                                <div class="survey-option-icon">🤩</div>
+                                <div>Estremamente soddisfatto</div>
+                            </div>
+                        </div>
+                        <div class="survey-navigation">
+                            <button class="btn btn-outline" onclick="prevStep(1)">Indietro</button>
+                            <button class="btn btn-primary" onclick="nextStep(3)">Avanti</button>
+                        </div>
+                    </div>
+
+                    <div class="survey-step" id="step3">
+                        <div class="survey-question">Cosa miglioreresti del tuo attuale metodo di apprendimento?</div>
+                        <textarea class="survey-textarea" placeholder="Scrivi qui i tuoi suggerimenti..."></textarea>
+                        <div class="survey-navigation">
+                            <button class="btn btn-outline" onclick="prevStep(2)">Indietro</button>
+                            <button class="btn btn-primary" onclick="nextStep(4)">Avanti</button>
+                        </div>
+                    </div>
+
+                    <div class="survey-step" id="step4">
+                        <div class="survey-question">Union ha migliorato il tuo apprendimento?</div>
+                        <div class="survey-options">
+                            <div class="survey-option" onclick="selectOption(this, 'si')">
+                                <div class="survey-option-icon">✅</div>
+                                <div>Sì, notevolmente</div>
+                            </div>
+                            <div class="survey-option" onclick="selectOption(this, 'parzialmente')">
+                                <div class="survey-option-icon">🔄</div>
+                                <div>Parzialmente</div>
+                            </div>
+                            <div class="survey-option" onclick="selectOption(this, 'no')">
+                                <div class="survey-option-icon">❌</div>
+                                <div>Non ancora</div>
+                            </div>
+                            <div class="survey-option" onclick="selectOption(this, 'non_so')">
+                                <div class="survey-option-icon">❓</div>
+                                <div>Non so ancora</div>
+                            </div>
+                        </div>
+                        <div class="survey-navigation">
+                            <button class="btn btn-outline" onclick="prevStep(3)">Indietro</button>
+                            <button class="btn btn-primary" onclick="nextStep(5)">Avanti</button>
+                        </div>
+                    </div>
+
+                    <div class="survey-step" id="step5">
+                        <div class="survey-question">Quale funzionalità di Union trovi più utile?</div>
+                        <div class="survey-options">
+                            <div class="survey-option" onclick="selectOption(this, 'mappe')">
+                                <div class="survey-option-icon">🗺️</div>
+                                <div>Mappe Concettuali AI</div>
+                            </div>
+                            <div class="survey-option" onclick="selectOption(this, 'riassunti')">
+                                <div class="survey-option-icon">📝</div>
+                                <div>Riassunti Intelligenti</div>
+                            </div>
+                            <div class="survey-option" onclick="selectOption(this, 'quiz')">
+                                <div class="survey-option-icon">🎯</div>
+                                <div>Quiz Interattivi</div>
+                            </div>
+                            <div class="survey-option" onclick="selectOption(this, 'registrazione')">
+                                <div class="survey-option-icon">🎤</div>
+                                <div>Registrazione Audio</div>
+                            </div>
+                            <div class="survey-option" onclick="selectOption(this, 'tutor')">
+                                <div class="survey-option-icon">💬</div>
+                                <div>Tutor AI 24/7</div>
+                            </div>
+                        </div>
+                        <div class="survey-navigation">
+                            <button class="btn btn-outline" onclick="prevStep(4)">Indietro</button>
+                            <button class="btn btn-primary" onclick="nextStep(6)">Avanti</button>
+                        </div>
+                    </div>
+
+                    <div class="survey-step" id="step6">
+                        <div class="survey-question">Altri commenti o suggerimenti?</div>
+                        <textarea class="survey-textarea" placeholder="Condividi altre idee per migliorare Union..."></textarea>
+                        <div class="survey-navigation">
+                            <button class="btn btn-outline" onclick="prevStep(5)">Indietro</button>
+                            <button class="btn btn-primary" onclick="submitSurvey()">Invia Sondaggio</button>
+                        </div>
+                    </div>
+
+                    <div class="survey-results" id="surveyResults">
+                        <div class="section-header">
+                            <h2>🎉 Grazie per il tuo feedback!</h2>
+                            <p class="subtitle">Ecco i risultati aggregati del sondaggio</p>
+                        </div>
+                        
+                        <div class="result-chart">
+                            <h3>📈 Soddisfazione Generale</h3>
+                            <div class="bar-chart-3d">
+                                <div class="bar-3d">
+                                    <div class="bar-front" style="--bar-height: 120px;">
+                                        <div class="bar-top"></div>
+                                        <div class="bar-side"></div>
+                                    </div>
+                                    <div class="bar-value">24%</div>
+                                    <div class="bar-label">😄 Molto</div>
+                                </div>
+                                <div class="bar-3d">
+                                    <div class="bar-front" style="--bar-height: 180px;">
+                                        <div class="bar-top"></div>
+                                        <div class="bar-side"></div>
+                                    </div>
+                                    <div class="bar-value">36%</div>
+                                    <div class="bar-label">😊 Abbastanza</div>
+                                </div>
+                                <div class="bar-3d">
+                                    <div class="bar-front" style="--bar-height: 100px;">
+                                        <div class="bar-top"></div>
+                                        <div class="bar-side"></div>
+                                    </div>
+                                    <div class="bar-value">20%</div>
+                                    <div class="bar-label">😐 Poco</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="result-stats">
+                            <div class="result-stat">
+                                <div class="result-stat-number">85%</div>
+                                <div class="result-stat-label">Utenti soddisfatti di Union</div>
+                            </div>
+                            <div class="result-stat">
+                                <div class="result-stat-number">67%</div>
+                                <div class="result-stat-label">Miglioramento apprendimento</div>
+                            </div>
+                            <div class="result-stat">
+                                <div class="result-stat-number">42%</div>
+                                <div class="result-stat-label">Riduzione difficoltà</div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="location.href='index.html'">Torna alla Home</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer id="contact">
+            <div class="footer-content">
+                <div class="footer-grid">
+                    <div class="footer-section">
+                        <h3>UNION</h3>
+                        <p>La piattaforma che rivoluziona l'educazione in Italia, combattendo la dispersione scolastica attraverso innovazione e AI.</p>
+                        <a href="contact-page.html" class="contact-button">📧 Contattaci per Supporto</a>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Servizi</h3>
+                        <ul>
+                            <li><a href="#">Mappe Concettuali</a></li>
+                            <li><a href="#">Riassunti AI</a></li>
+                            <li><a href="#">Quiz Interattivi</a></li>
+                            <li><a href="#">Registrazione Audio</a></li>
+                            <li><a href="#">Tutor AI</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Azienda</h3>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                            <li><a href="#">Termini di Servizio</a></li>
+                            <li><a href="#">Chi Siamo</a></li>
+                            <li><a href="bullying-page.html">Area Bullismo</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Supporto</h3>
+                        <ul>
+                            <li><a href="contact-page.html">Assistenza Tecnica</a></li>
+                            <li><a href="#">Centro Assistenza</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Documentazione</a></li>
+                            <li><a href="#">support@union.it</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Union - Tutti i diritti riservati | P.IVA 12345678901</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

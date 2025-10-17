@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Docente - Union</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="logo" onclick="location.href='index.html'">UNION</div>
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#charts">Dati Dispersione</a></li>
+                    <li><a href="index.html#impact">Il Nostro Impatto</a></li>
+                    <li><a href="index.html#services">Servizi</a></li>
+                    <li><a href="index.html#news">News IA</a></li>
+                    <li><a href="index.html#survey">Sondaggi</a></li>
+                    <li><a href="index.html#contact">Contatti</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="teacher-login.html" class="btn btn-outline">Il Mio Account</a>
+                    <a href="index.html" class="btn btn-primary">Esci</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Teacher Dashboard -->
+    <div class="dashboard active">
+        <div class="dashboard-header">
+            <div class="dashboard-header-content">
+                <h1>👨‍🏫 Dashboard Docente</h1>
+                <p>Benvenuto Prof. Rossi! Gestisci le tue classi e crea contenuti straordinari</p>
+            </div>
+        </div>
+        <div class="dashboard-content">
+            <div class="dashboard-nav">
+                <div class="nav-tab active" onclick="switchTeacherTab('materials')">Materiali Didattici</div>
+                <div class="nav-tab" onclick="switchTeacherTab('classes')">Le Mie Classi</div>
+                <div class="nav-tab" onclick="switchTeacherTab('analytics')">Analytics</div>
+                <div class="nav-tab" onclick="switchTeacherTab('research')">Approfondimenti</div>
+            </div>
+
+            <!-- Materials Tab -->
+            <div id="teacher-materials" class="tab-content active">
+                <div class="class-selector">
+                    <h3>Seleziona Classe e Materia</h3>
+                    <div class="class-grid">
+                        <div class="class-card active" onclick="selectClass(this, '3A-matematica')">
+                            <div class="material-icon">📐</div>
+                            <h4>3A - Matematica</h4>
+                            <p>24 studenti</p>
+                        </div>
+                        <div class="class-card" onclick="selectClass(this, '3A-scienze')">
+                            <div class="material-icon">🔬</div>
+                            <h4>3A - Scienze</h4>
+                            <p>24 studenti</p>
+                        </div>
+                        <div class="class-card" onclick="selectClass(this, '4B-matematica')">
+                            <div class="material-icon">📐</div>
+                            <h4>4B - Matematica</h4>
+                            <p>22 studenti</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-cards">
+                    <div class="action-card" onclick="openEnhancedRecording('teacher')">
+                        <div class="action-card-icon">🎤</div>
+                        <h3>Registra Lezione</h3>
+                        <p>Registra e trascrivi automaticamente con controlli avanzati</p>
+                    </div>
+                    <div class="action-card" onclick="openDemo('mindmap')">
+                        <div class="action-card-icon">🗺️</div>
+                        <h3>Genera Mappa Concettuale</h3>
+                        <p>Crea mappe automaticamente da testi</p>
+                    </div>
+                    <div class="action-card" onclick="openDemo('summary')">
+                        <div class="action-card-icon">📝</div>
+                        <h3>Crea Riassunto</h3>
+                        <p>Genera riassunti efficaci con AI</p>
+                    </div>
+                    <div class="action-card" onclick="openDemo('quiz')">
+                        <div class="action-card-icon">🎯</div>
+                        <h3>Quiz Interattivi</h3>
+                        <p>Crea verifiche personalizzate</p>
+                    </div>
+                    <div class="action-card" onclick="switchTeacherTab('analytics')">
+                        <div class="action-card-icon">📊</div>
+                        <h3>Analytics Classe</h3>
+                        <p>Monitora progressi degli studenti</p>
+                    </div>
+                    <div class="action-card" onclick="switchTeacherTab('research')">
+                        <div class="action-card-icon">🔍</div>
+                        <h3>Approfondimenti AI</h3>
+                        <p>Genera contenuti di approfondimento</p>
+                    </div>
+                </div>
+
+                <div class="shared-content">
+                    <h3>Contenuti Condivisi Recentemente</h3>
+                    <div class="content-list">
+                        <div class="content-item">
+                            <div class="content-icon">🎤</div>
+                            <div class="content-info">
+                                <div class="content-title">Lezione: Equazioni di Secondo Grado</div>
+                                <div class="content-meta">Matematica - 3A | 2 giorni fa | 45 minuti</div>
+                            </div>
+                            <div class="content-actions">
+                                <button class="action-btn download">Scarica</button>
+                                <button class="action-btn share">Condividi</button>
+                            </div>
+                        </div>
+                        <div class="content-item">
+                            <div class="content-icon">🗺️</div>
+                            <div class="content-info">
+                                <div class="content-title">Mappa: Teorema di Pitagora</div>
+                                <div class="content-meta">Matematica - 3A | 5 giorni fa</div>
+                            </div>
+                            <div class="content-actions">
+                                <button class="action-btn download">Scarica</button>
+                                <button class="action-btn share">Condividi</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Classes Tab -->
+            <div id="teacher-classes" class="tab-content">
+                <h2>Le Mie Classi</h2>
+                <div class="class-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+                    <div class="class-card active">
+                        <div class="material-icon">📐</div>
+                        <h4>3A - Matematica</h4>
+                        <p>24 studenti</p>
+                        <div class="progress-bar" style="margin: 1rem 0;">
+                            <div class="progress-fill" style="width: 75%;"></div>
+                        </div>
+                        <p>75% completamento programma</p>
+                    </div>
+                    <div class="class-card">
+                        <div class="material-icon">🔬</div>
+                        <h4>3A - Scienze</h4>
+                        <p>24 studenti</p>
+                        <div class="progress-bar" style="margin: 1rem 0;">
+                            <div class="progress-fill" style="width: 60%;"></div>
+                        </div>
+                        <p>60% completamento programma</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Tab -->
+            <div id="teacher-analytics" class="tab-content">
+                <h2>Analytics di Classe</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">87%</div>
+                        <div class="stat-label">Partecipazione media</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">7.8/10</div>
+                        <div class="stat-label">Voto medio verifiche</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">92%</div>
+                        <div class="stat-label">Completamento compiti</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Studenti a rischio</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research Tab -->
+            <div id="teacher-research" class="tab-content">
+                <h2>Approfondimenti AI</h2>
+                <div class="action-cards">
+                    <div class="action-card" onclick="openResearch('matematica')">
+                        <div class="action-card-icon">📐</div>
+                        <h3>Matematica Avanzata</h3>
+                        <p>Approfondisci concetti matematici complessi</p>
+                    </div>
+                    <div class="action-card" onclick="openResearch('scienze')">
+                        <div class="action-card-icon">🔬</div>
+                        <h3>Scienze Sperimentali</h3>
+                        <p>Risorse per laboratori e esperimenti</p>
+                    </div>
+                    <div class="action-card" onclick="openResearch('metodologie')">
+                        <div class="action-card-icon">💡</div>
+                        <h3>Metodologie Didattiche</h3>
+                        <p>Nuove strategie di insegnamento</p>
+                    </div>
+                </div>
+
+                <div class="research-results" id="researchResults">
+                    <!-- I risultati della ricerca verranno inseriti qui dinamicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Recording Modal -->
+    <div id="enhancedRecordingModal" class="modal">
+        <!-- Contenuto del modal di registrazione -->
+    </div>
+
+    <!-- Demo Modal -->
+    <div id="demoModal" class="modal">
+        <!-- Contenuto del modal demo -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

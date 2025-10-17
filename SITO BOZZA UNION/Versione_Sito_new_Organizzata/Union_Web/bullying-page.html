@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Bullismo - Union</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="logo" onclick="location.href='index.html'">UNION</div>
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#charts">Dati Dispersione</a></li>
+                    <li><a href="index.html#impact">Il Nostro Impatto</a></li>
+                    <li><a href="index.html#services">Servizi</a></li>
+                    <li><a href="index.html#news">News IA</a></li>
+                    <li><a href="index.html#survey">Sondaggi</a></li>
+                    <li><a href="index.html#contact">Contatti</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="teacher-login.html" class="btn btn-outline">Login</a>
+                    <a href="teacher-login.html" class="btn btn-primary">Registrati</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Bullying Report Page -->
+    <div class="dashboard active">
+        <div class="dashboard-header">
+            <div class="dashboard-header-content">
+                <h1>🚫 Area Bullismo</h1>
+                <p>Segnala episodi di bullismo in modo sicuro e anonimo</p>
+            </div>
+        </div>
+        <div class="dashboard-content">
+            <div class="content-area">
+                <div class="section-header">
+                    <h2>Importante: Denunciare è Giusto</h2>
+                    <p class="subtitle">Il bullismo è un problema serio. Segnalando, aiuti te stesso e gli altri.</p>
+                </div>
+
+                <div class="story-text">
+                    <p>Il bullismo può manifestarsi in molte forme: fisiche, verbali, psicologiche e online (cyberbullismo). È importante riconoscerlo e denunciarlo.</p>
+                    <p>Se sei vittima, testimone o anche se hai agito da bullo e vuoi cambiare, questa è la sezione giusta. I docenti e la scuola intera sono qui per aiutare.</p>
+                    <p>Ricorda: denunciare non è fare la spia, è un atto di coraggio che aiuti te e gli altri. I docenti apprezzeranno la tua onestà e faranno di tutto per risolvere la situazione in modo costruttivo.</p>
+                </div>
+
+                <div class="bullying-options">
+                    <div class="bullying-option-card" onclick="selectBullyingType('victim')">
+                        <div class="bullying-icon">😔</div>
+                        <h3>Sono una vittima</h3>
+                        <p>Stai subendo bullismo? Raccontaci cosa sta succedendo.</p>
+                    </div>
+                    <div class="bullying-option-card" onclick="selectBullyingType('witness')">
+                        <div class="bullying-icon">👀</div>
+                        <h3>Sono un testimone</h3>
+                        <p>Hai assistito a episodi di bullismo? Segnalalo.</p>
+                    </div>
+                    <div class="bullying-option-card" onclick="selectBullyingType('bully')">
+                        <div class="bullying-icon">😟</div>
+                        <h3>Mi sono comportato da bullo</h3>
+                        <p>Vuoi cambiare? Apprezziamo la tua onestà.</p>
+                    </div>
+                </div>
+
+                <div id="bullying-form" style="display: none;">
+                    <h3 id="bullying-form-title">Segnalazione Bullismo</h3>
+                    <div class="form-group">
+                        <label for="bullying-description">Racconta cosa è successo:</label>
+                        <textarea id="bullying-description" class="form-control" rows="5" placeholder="Descrivi l'episodio in dettaglio..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="bullying-frequency">Quante volte è successo?</label>
+                        <select id="bullying-frequency" class="form-control">
+                            <option value="">Seleziona...</option>
+                            <option value="once">Una volta</option>
+                            <option value="few">Poche volte</option>
+                            <option value="often">Spesso</option>
+                            <option value="daily">Quasi ogni giorno</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bullying-involved">Chi è coinvolto? (nomi, se li conosci)</label>
+                        <input type="text" id="bullying-involved" class="form-control" placeholder="Nomi delle persone coinvolte...">
+                    </div>
+                    <div class="form-group">
+                        <label for="bullying-date">Data dell'episodio (se ricordi):</label>
+                        <input type="date" id="bullying-date" class="form-control">
+                    </div>
+                    <button class="btn btn-primary" onclick="submitBullyingReport()">Invia Segnalazione</button>
+                </div>
+
+                <div id="bullying-thanks" style="display: none; text-align: center; padding: 2rem;">
+                    <h2>Grazie per la tua segnalazione</h2>
+                    <p>La tua segnalazione è stata inviata. I docenti prenderanno provvedimenti e ti aiuteranno.</p>
+                    <p>Ricorda: denunciare è un atto di coraggio che aiuta te e gli altri.</p>
+                    <button class="btn btn-primary" onclick="location.href='index.html'">Torna alla Home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedBullyingType = '';
+        
+        function selectBullyingType(type) {
+            selectedBullyingType = type;
+            document.querySelectorAll('.bullying-option-card').forEach(card => {
+                card.style.borderColor = 'transparent';
+            });
+            event.currentTarget.style.borderColor = 'var(--primary)';
+
+            document.getElementById('bullying-form').style.display = 'block';
+            let title = '';
+            if (type === 'victim') {
+                title = 'Sei una vittima di bullismo';
+            } else if (type === 'witness') {
+                title = 'Hai assistito a un episodio di bullismo';
+            } else if (type === 'bully') {
+                title = 'Vuoi cambiare il tuo comportamento';
+            }
+            document.getElementById('bullying-form-title').textContent = title;
+        }
+
+        function submitBullyingReport() {
+            // Qui in una app reale invieremmo i dati al server
+            document.getElementById('bullying-form').style.display = 'none';
+            document.getElementById('bullying-thanks').style.display = 'block';
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

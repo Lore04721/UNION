@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Utente - Union</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="logo" onclick="location.href='index.html'">UNION</div>
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#charts">Dati Dispersione</a></li>
+                    <li><a href="index.html#impact">Il Nostro Impatto</a></li>
+                    <li><a href="index.html#services">Servizi</a></li>
+                    <li><a href="index.html#news">News IA</a></li>
+                    <li><a href="index.html#survey">Sondaggi</a></li>
+                    <li><a href="index.html#contact">Contatti</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="generic-login.html" class="btn btn-outline">Il Mio Account</a>
+                    <a href="index.html" class="btn btn-primary">Esci</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Generic User Dashboard -->
+    <div class="dashboard active">
+        <div class="dashboard-header">
+            <div class="dashboard-header-content">
+                <h1>👤 Dashboard Utente</h1>
+                <p>Benvenuto! Organizza il tuo apprendimento personale</p>
+            </div>
+        </div>
+        <div class="dashboard-content">
+            <div class="folders-section">
+                <h2>Le Tue Cartelle</h2>
+                <div class="folder-grid">
+                    <div class="folder-card" onclick="openFolder('tecnologia')">
+                        <div class="folder-icon">💻</div>
+                        <div class="folder-name">Tecnologia</div>
+                        <div class="folder-count">15 file</div>
+                    </div>
+                    <div class="folder-card" onclick="openFolder('lingue')">
+                        <div class="folder-icon">🌐</div>
+                        <div class="folder-name">Lingue</div>
+                        <div class="folder-count">8 file</div>
+                    </div>
+                    <div class="folder-card" onclick="openFolder('business')">
+                        <div class="folder-icon">💼</div>
+                        <div class="folder-name">Business</div>
+                        <div class="folder-count">12 file</div>
+                    </div>
+                    <div class="folder-card add-folder" onclick="createNewFolder()">
+                        <div class="folder-icon">+</div>
+                        <div class="folder-name">Nuova Cartella</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-cards">
+                <div class="action-card" onclick="openEnhancedRecording('generic')">
+                    <div class="action-card-icon">🎤</div>
+                    <h3>Registra Audio</h3>
+                    <p>Registra e trascrivi con controlli avanzati</p>
+                </div>
+                <div class="action-card" onclick="openDemo('mindmap')">
+                    <div class="action-card-icon">🗺️</div>
+                    <h3>Genera Mappa</h3>
+                    <p>Crea mappe concettuali automaticamente</p>
+                </div>
+                <div class="action-card" onclick="openDemo('summary')">
+                    <div class="action-card-icon">📝</div>
+                    <h3>Crea Riassunto</h3>
+                    <p>Genera riassunti efficaci con AI</p>
+                </div>
+                <div class="action-card" onclick="openDemo('quiz')">
+                    <div class="action-card-icon">🎯</div>
+                    <h3>Quiz di Verifica</h3>
+                    <p>Testa le tue conoscenze</p>
+                </div>
+                <div class="action-card" onclick="location.href='bullying-page.html'">
+                    <div class="action-card-icon">🚫</div>
+                    <h3>Area Bullismo</h3>
+                    <p>Segnala episodi di bullismo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Recording Modal -->
+    <div id="enhancedRecordingModal" class="modal">
+        <!-- Contenuto del modal di registrazione -->
+    </div>
+
+    <!-- Demo Modal -->
+    <div id="demoModal" class="modal">
+        <!-- Contenuto del modal demo -->
+    </div>
+
+    <script>
+        function openFolder(folderName) {
+            alert(`Apertura cartella: ${folderName}`);
+        }
+        
+        function createNewFolder() {
+            const folderName = prompt('Inserisci il nome della nuova cartella:');
+            if (folderName) {
+                alert(`Cartella "${folderName}" creata con successo!`);
+            }
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

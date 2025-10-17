@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Genitore - Union</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="logo" onclick="location.href='index.html'">UNION</div>
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#charts">Dati Dispersione</a></li>
+                    <li><a href="index.html#impact">Il Nostro Impatto</a></li>
+                    <li><a href="index.html#services">Servizi</a></li>
+                    <li><a href="index.html#news">News IA</a></li>
+                    <li><a href="index.html#survey">Sondaggi</a></li>
+                    <li><a href="index.html#contact">Contatti</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="parent-login.html" class="btn btn-outline">Il Mio Account</a>
+                    <a href="index.html" class="btn btn-primary">Esci</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Parent Dashboard -->
+    <div class="dashboard active">
+        <div class="dashboard-header">
+            <div class="dashboard-header-content">
+                <h1>👪 Dashboard Genitore</h1>
+                <p>Benvenuto! Monitora i progressi dei tuoi figli</p>
+            </div>
+        </div>
+        <div class="dashboard-content">
+            <div class="student-sections">
+                <div class="sidebar">
+                    <h3>I Tuoi Figli</h3>
+                    <ul class="subject-list" id="children-list">
+                        <li class="subject-item active" onclick="selectChild(this, 'marco-rossi')">Marco Rossi - 3A</li>
+                        <li class="subject-item" onclick="selectChild(this, 'lucia-bianchi')">Lucia Bianchi - 2B</li>
+                    </ul>
+                </div>
+
+                <div class="content-area">
+                    <div id="parent-materials" class="tab-content active">
+                        <h2 id="child-name">Marco Rossi - 3A</h2>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number">85%</div>
+                                <div class="stat-label">Media Generale</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">92%</div>
+                                <div class="stat-label">Partecipazione</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">78%</div>
+                                <div class="stat-label">Completamento Compiti</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">3</div>
+                                <div class="stat-label">Materie in difficoltà</div>
+                            </div>
+                        </div>
+
+                        <h3 style="margin-top: 2rem;">Andamento per Materie</h3>
+                        <div class="progress-list">
+                            <div class="progress-item">
+                                <div class="progress-label">Matematica</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 80%"></div>
+                                </div>
+                                <div class="progress-value">80%</div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-label">Italiano</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%"></div>
+                                </div>
+                                <div class="progress-value">75%</div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-label">Scienze</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 90%"></div>
+                                </div>
+                                <div class="progress-value">90%</div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-label">Inglese</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%"></div>
+                                </div>
+                                <div class="progress-value">85%</div>
+                            </div>
+                        </div>
+
+                        <!-- Teacher Contact Button -->
+                        <div style="margin-top: 2rem; text-align: center;">
+                            <button class="btn btn-primary" onclick="openContactTeacherModal()">📧 Dubbi su qualche argomento? Scrivi al prof</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Teacher Contact Modal -->
+    <div id="contactTeacherModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeContactTeacherModal()">&times;</span>
+            <div class="modal-header">
+                <h2>📧 Scrivi al Docente</h2>
+                <p>Invia un messaggio al docente per chiarire dubbi</p>
+            </div>
+            <div class="contact-teacher-form">
+                <div class="form-group">
+                    <label for="teacher-select">Seleziona Docente</label>
+                    <select id="teacher-select" class="form-control">
+                        <option value="rossi">Prof. Rossi - Matematica</option>
+                        <option value="bianchi">Prof. Bianchi - Italiano</option>
+                        <option value="verdi">Prof. Verdi - Scienze</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="teacher-subject">Oggetto</label>
+                    <input type="text" id="teacher-subject" class="form-control" placeholder="Oggetto del messaggio...">
+                </div>
+                <div class="form-group">
+                    <label for="teacher-message">Messaggio</label>
+                    <textarea id="teacher-message" class="form-control" rows="5" placeholder="Scrivi il tuo messaggio..."></textarea>
+                </div>
+                <button class="btn btn-primary" onclick="sendMessageToTeacher()">Invia Messaggio</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function selectChild(element, childId) {
+            document.querySelectorAll('#children-list .subject-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            element.classList.add('active');
+            document.getElementById('child-name').textContent = element.textContent;
+        }
+        
+        function openContactTeacherModal() {
+            document.getElementById('contactTeacherModal').classList.add('active');
+        }
+        
+        function closeContactTeacherModal() {
+            document.getElementById('contactTeacherModal').classList.remove('active');
+        }
+        
+        function sendMessageToTeacher() {
+            const teacher = document.getElementById('teacher-select').value;
+            const subject = document.getElementById('teacher-subject').value;
+            const message = document.getElementById('teacher-message').value;
+
+            if (!subject || !message) {
+                alert('Per favore, inserisci oggetto e messaggio.');
+                return;
+            }
+
+            alert('Messaggio inviato al docente!');
+            closeContactTeacherModal();
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
