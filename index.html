@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Union - Piattaforma digitale per l'apprendimento con AI">
     <title>Union - Piattaforma Digitale per l'Apprendimento</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
+    <style>
+        /* Variabili CSS aggiornate */
         :root {
             --primary: #6366f1;
             --primary-dark: #4f46e5;
@@ -23,6 +21,29 @@
             --success: #10b981;
             --warning: #f59e0b;
             --danger: #ef4444;
+            --header-height: 70px;
+            --mobile-breakpoint: 768px;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --card-radius: 12px;
+            --card-padding: 1.5rem;
+        }
+
+        /* Reset e Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 14px;
+            scroll-behavior: smooth;
+        }
+
+        @media (min-width: 768px) {
+            html {
+                font-size: 16px;
+            }
         }
 
         body {
@@ -33,16 +54,17 @@
             overflow-x: hidden;
         }
 
-        /* Header */
+        /* Header Sticky Mobile-First */
         header {
-            position: fixed;
-            width: 100%;
+            position: sticky;
             top: 0;
+            width: 100%;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
+            height: var(--header-height);
         }
 
         header.scrolled {
@@ -56,6 +78,7 @@
             padding: 1rem 5%;
             max-width: 1400px;
             margin: 0 auto;
+            height: 100%;
         }
 
         .logo {
@@ -67,12 +90,53 @@
             background-clip: text;
             letter-spacing: -1px;
             cursor: pointer;
+            transition: transform 0.3s ease;
         }
 
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* Menu Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background: var(--dark);
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .hamburger[aria-expanded="true"] span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger[aria-expanded="true"] span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger[aria-expanded="true"] span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Navigazione Mobile */
         .nav-menu {
             display: flex;
             gap: 2rem;
             align-items: center;
+            transition: all 0.3s ease;
         }
 
         .nav-links {
@@ -87,6 +151,7 @@
             font-weight: 500;
             transition: color 0.3s;
             position: relative;
+            padding: 0.5rem 0;
         }
 
         .nav-links a:hover {
@@ -113,6 +178,31 @@
             gap: 1rem;
         }
 
+        /* Pulsante Indietro Universale */
+        .back-button {
+            position: fixed;
+            top: 85px;
+            left: 20px;
+            z-index: 999;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .back-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Bottoni Base */
         .btn {
             padding: 0.7rem 1.5rem;
             border-radius: 50px;
@@ -122,6 +212,10 @@
             border: none;
             cursor: pointer;
             font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
         .btn-outline {
@@ -146,6 +240,16 @@
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Stati Focus Accessibili */
+        button:focus-visible,
+        a:focus-visible,
+        input:focus-visible,
+        select:focus-visible,
+        textarea:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
         }
 
         /* Hero Section */
@@ -200,6 +304,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -215,19 +320,32 @@
             animation: fadeInUp 0.8s ease 0.4s backwards;
         }
 
-        .cta-card {
+        /* Card Coerenti */
+        .cta-card,
+        .action-card,
+        .service-card {
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --card-radius: 12px;
+            --card-padding: 1.5rem;
+
             background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-            max-width: 320px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            padding: var(--card-padding);
+            border-radius: var(--card-radius);
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
             cursor: pointer;
+            border-top: 4px solid var(--primary);
         }
 
-        .cta-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+        .cta-card {
+            max-width: 320px;
+        }
+
+        .cta-card:hover,
+        .action-card:hover,
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         }
 
         .cta-card h3 {
@@ -300,8 +418,13 @@
         }
 
         @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .charts-3d-content {
@@ -324,6 +447,12 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            opacity: 1 !important;
+            filter: none !important;
+        }
+
+        .charts-3d-header h2:hover {
+            opacity: 0.9 !important;
         }
 
         .charts-3d-header p {
@@ -465,13 +594,11 @@
         .pie-slice-inner {
             width: 100%;
             height: 100%;
-            background: conic-gradient(
-                from 0deg,
-                var(--accent) 0deg 130deg,
-                var(--primary) 130deg 230deg,
-                var(--danger) 230deg 290deg,
-                var(--warning) 290deg 360deg
-            );
+            background: conic-gradient(from 0deg,
+                    var(--accent) 0deg 130deg,
+                    var(--primary) 130deg 230deg,
+                    var(--danger) 230deg 290deg,
+                    var(--warning) 290deg 360deg);
             border-radius: 50%;
             transform: translateZ(20px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
@@ -489,8 +616,13 @@
         }
 
         @keyframes rotatePie {
-            from { transform: translateZ(20px) rotateY(0deg); }
-            to { transform: translateZ(20px) rotateY(360deg); }
+            from {
+                transform: translateZ(20px) rotateY(0deg);
+            }
+
+            to {
+                transform: translateZ(20px) rotateY(360deg);
+            }
         }
 
         /* Line Chart 3D */
@@ -542,9 +674,12 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.2);
             }
@@ -659,15 +794,6 @@
             gap: 2rem;
         }
 
-        .service-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s;
-            border-top: 4px solid var(--primary);
-        }
-
         .service-card:nth-child(2) {
             border-top-color: var(--secondary);
         }
@@ -678,11 +804,6 @@
 
         .service-card:nth-child(4) {
             border-top-color: var(--warning);
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         }
 
         .service-icon {
@@ -885,10 +1006,13 @@
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: color 0.3s;
+            padding: 0.2rem 0;
+            display: inline-block;
         }
 
         .footer-section ul li a:hover {
             color: var(--accent);
+            transform: translateX(5px);
         }
 
         .contact-button {
@@ -961,23 +1085,6 @@
             margin-bottom: 3rem;
         }
 
-        .action-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: 3px solid transparent;
-        }
-
-        .action-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            border-color: var(--primary);
-        }
-
         .action-card-icon {
             width: 80px;
             height: 80px;
@@ -1035,7 +1142,8 @@
             border-left: 4px solid transparent;
         }
 
-        .subject-item:hover, .subject-item.active {
+        .subject-item:hover,
+        .subject-item.active {
             background: rgba(99, 102, 241, 0.1);
             border-left-color: var(--primary);
         }
@@ -1147,8 +1255,13 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .modal-content {
@@ -1167,6 +1280,7 @@
                 opacity: 0;
                 transform: translateY(50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -1181,10 +1295,19 @@
             cursor: pointer;
             color: var(--gray);
             transition: color 0.3s;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
         }
 
         .modal-close:hover {
             color: var(--danger);
+            background: rgba(239, 68, 68, 0.1);
         }
 
         .modal-header {
@@ -1238,9 +1361,12 @@
         }
 
         @keyframes recordPulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 box-shadow: 0 10px 40px rgba(239, 68, 68, 0.4);
             }
+
             50% {
                 box-shadow: 0 10px 60px rgba(239, 68, 68, 0.8);
             }
@@ -1299,18 +1425,48 @@
             animation: waveAnimation 1s ease-in-out infinite;
         }
 
-        .wave-bar:nth-child(1) { animation-delay: 0s; }
-        .wave-bar:nth-child(2) { animation-delay: 0.1s; }
-        .wave-bar:nth-child(3) { animation-delay: 0.2s; }
-        .wave-bar:nth-child(4) { animation-delay: 0.3s; }
-        .wave-bar:nth-child(5) { animation-delay: 0.4s; }
-        .wave-bar:nth-child(6) { animation-delay: 0.3s; }
-        .wave-bar:nth-child(7) { animation-delay: 0.2s; }
-        .wave-bar:nth-child(8) { animation-delay: 0.1s; }
+        .wave-bar:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .wave-bar:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .wave-bar:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .wave-bar:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .wave-bar:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .wave-bar:nth-child(6) {
+            animation-delay: 0.3s;
+        }
+
+        .wave-bar:nth-child(7) {
+            animation-delay: 0.2s;
+        }
+
+        .wave-bar:nth-child(8) {
+            animation-delay: 0.1s;
+        }
 
         @keyframes waveAnimation {
-            0%, 100% { height: 20px; }
-            50% { height: 80px; }
+
+            0%,
+            100% {
+                height: 20px;
+            }
+
+            50% {
+                height: 80px;
+            }
         }
 
         .transcription-area {
@@ -1344,7 +1500,9 @@
         }
 
         @keyframes blink {
-            50% { opacity: 0; }
+            50% {
+                opacity: 0;
+            }
         }
 
         .demo-actions {
@@ -1392,7 +1550,7 @@
             right: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
             animation: rotate 20s linear infinite;
         }
 
@@ -1450,7 +1608,7 @@
             margin-bottom: 2.5rem;
             text-align: center;
             font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         .survey-options {
@@ -1567,6 +1725,31 @@
         .result-stat-label {
             font-size: 1.1rem;
             opacity: 0.9;
+        }
+
+        /* Messaggi di validazione */
+        .validation-error {
+            color: var(--danger);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            padding: 0.5rem;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 5px;
+            border-left: 3px solid var(--danger);
+        }
+
+        .field-error {
+            color: var(--danger);
+            font-size: 0.8rem;
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        .help-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: block;
         }
 
         /* Enhanced Dashboard Styles */
@@ -1907,6 +2090,11 @@
             box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
         }
 
+        .form-control[aria-invalid="true"] {
+            border-color: var(--danger);
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+        }
+
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -2127,15 +2315,58 @@
         }
 
         @keyframes loading {
-            0% { width: 0%; }
-            50% { width: 100%; }
-            100% { width: 0%; }
+            0% {
+                width: 0%;
+            }
+
+            50% {
+                width: 100%;
+            }
+
+            100% {
+                width: 0%;
+            }
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
+        /* Responsive Design Mobile-First */
+        @media (max-width: 767px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: var(--header-height);
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - var(--header-height));
+                background: white;
+                transition: left 0.3s ease;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
             .nav-links {
-                display: none;
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+            }
+
+            .auth-buttons {
+                margin-top: 2rem;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .auth-buttons .btn {
+                width: 100%;
+                text-align: center;
             }
 
             .hero h1 {
@@ -2151,12 +2382,20 @@
                 align-items: center;
             }
 
+            .cta-card {
+                max-width: 100%;
+            }
+
             .story-section {
                 padding: 3rem 2rem;
             }
 
             .student-sections {
                 grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
             }
 
             .stats-grid {
@@ -2198,31 +2437,214 @@
             .bullying-options {
                 grid-template-columns: 1fr;
             }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .back-button {
+                top: 75px;
+                left: 10px;
+                font-size: 0.8rem;
+                padding: 0.5rem 1rem;
+            }
+
+            /* Nascondi elementi non essenziali su mobile */
+            .sidebar {
+                display: none;
+            }
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .student-sections {
+                grid-template-columns: 250px 1fr;
+            }
+
+            .charts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .action-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Immagini Responsive */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Miglioramenti accessibilità per riduzione movimento */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Contrasto migliorato per accessibilità */
+        @media (prefers-contrast: high) {
+            :root {
+                --primary: #0000ff;
+                --secondary: #ff00ff;
+                --accent: #00ffff;
+                --dark: #000000;
+                --light: #ffffff;
+            }
+        }
+
+
+
+        .auth-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .auth-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 16px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .auth-tab.active {
+            border-bottom: 2px solid #007bff;
+            color: #007bff;
+        }
+
+        .auth-form {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .profile-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .profile-option {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .profile-option:hover {
+            background-color: #f5f5f5;
+        }
+
+        .profile-option.selected {
+            border-color: #007bff;
+            background-color: #e6f2ff;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .forgot-password {
+            display: block;
+            margin-top: 10px;
+            text-align: right;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .school-fields {
+            display: none;
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
-    <header id="header">
-        <nav>
-            <div class="logo" onclick="backToHome()">UNION</div>
-            <div class="nav-menu">
+    <header id="header" role="banner">
+        <nav aria-label="Navigazione principale">
+            <div class="logo" onclick="backToHome()" role="button" tabindex="0" aria-label="Torna alla home page">UNION
+            </div>
+
+            <button class="hamburger" aria-label="Menu navigazione" aria-expanded="false" aria-controls="nav-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-menu" id="nav-menu" role="navigation" aria-label="Menu principale">
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#charts">Dati Dispersione</a></li>
-                    <li><a href="#impact">Il Nostro Impatto</a></li>
-                    <li><a href="#services">Servizi</a></li>
-                    <li><a href="#news">News IA</a></li>
-                    <li><a href="#survey">Sondaggi</a></li>
-                    <li><a href="#contact">Contatti</a></li>
+                    <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
+                    <li><a href="#charts" onclick="closeMobileMenu()">Dati Dispersione</a></li>
+                    <li><a href="#impact" onclick="closeMobileMenu()">Il Nostro Impatto</a></li>
+                    <li><a href="#services" onclick="closeMobileMenu()">Servizi</a></li>
+                    <li><a href="#news" onclick="closeMobileMenu()">News IA</a></li>
+                    <li><a href="#survey" onclick="closeMobileMenu()">Sondaggi</a></li>
+                    <li><a href="#contact" onclick="closeMobileMenu()">Contatti</a></li>
                 </ul>
                 <div class="auth-buttons">
-                    <a href="#" class="btn btn-outline" onclick="showAuthModal('login')">Login</a>
-                    <a href="#" class="btn btn-primary" onclick="showAuthModal('register')">Registrati</a>
+                    <a href="#" class="btn btn-outline" onclick="showAuthModal('login'); closeMobileMenu();">Login</a>
+                    <a href="#" class="btn btn-primary"
+                        onclick="showAuthModal('register'); closeMobileMenu();">Registrati</a>
                 </div>
             </div>
         </nav>
     </header>
+
+    <!-- Pulsante indietro universale -->
+    <button class="back-button" onclick="goBack()" aria-label="Torna alla pagina precedente" style="display: none;">
+        ← Indietro
+    </button>
 
     <!-- Login/Registration Modal -->
     <div id="authModal" class="auth-modal">
@@ -2268,11 +2690,6 @@
                             <div class="role-icon">👨‍🏫</div>
                             <h4>Docente</h4>
                             <p>Crea contenuti per le tue classi</p>
-                        </div>
-                        <div class="role-card" onclick="selectRole('parent')">
-                            <div class="role-icon">👪</div>
-                            <h4>Genitore</h4>
-                            <p>Monitora i progressi dei tuoi figli</p>
                         </div>
                         <div class="role-card" onclick="selectRole('generic')">
                             <div class="role-icon">👤</div>
@@ -2409,54 +2826,6 @@
                     <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="performRegistration('teacher')">Completa Registrazione</button>
                 </div>
 
-                <!-- Parent Registration -->
-                <div id="parentRegistration" class="form-step" style="display: none;">
-                    <h3 style="margin-bottom: 1.5rem;">Registrazione Genitore</h3>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="parentName">Nome</label>
-                            <input type="text" id="parentName" class="form-control" placeholder="Il tuo nome">
-                        </div>
-                        <div class="form-group">
-                            <label for="parentSurname">Cognome</label>
-                            <input type="text" id="parentSurname" class="form-control" placeholder="Il tuo cognome">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="parentEmail">Email</label>
-                        <input type="email" id="parentEmail" class="form-control" placeholder="la.tua.email@esempio.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="parentChildren">Figli (seleziona dalla lista)</label>
-                        <select id="parentChildren" class="form-control" multiple>
-                            <option value="marco-rossi-3A">Marco Rossi - 3A</option>
-                            <option value="lucia-bianchi-2B">Lucia Bianchi - 2B</option>
-                            <option value="giuseppe-verdi-4C">Giuseppe Verdi - 4C</option>
-                        </select>
-                        <small style="color: var(--gray);">Tieni premuto Ctrl per selezionare più figli</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="parentPassword">Password</label>
-                        <input type="password" id="parentPassword" class="form-control" placeholder="Crea una password sicura">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="parentConfirmPassword">Conferma Password</label>
-                        <input type="password" id="parentConfirmPassword" class="form-control" placeholder="Ripeti la password">
-                    </div>
-                    
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="parentPrivacyPolicy" required>
-                        <label for="parentPrivacyPolicy">Accetto i <a href="#" onclick="showPrivacyPage(event)">termini di servizio</a> e la <a href="#" onclick="showPrivacyPage(event)">privacy policy</a></label>
-                    </div>
-                    
-                    <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="performRegistration('parent')">Completa Registrazione</button>
-                </div>
-
                 <!-- Generic User Registration -->
                 <div id="genericRegistration" class="form-step" style="display: none;">
                     <h3 style="margin-bottom: 1.5rem;">Registrazione Utente</h3>
@@ -2517,27 +2886,31 @@
         <section class="hero" id="home">
             <div class="hero-content">
                 <h1>Rivoluziona l'Apprendimento con Union</h1>
-                <p>La piattaforma innovativa che sta trasformando l'educazione in Italia, combattendo la dispersione scolastica attraverso l'intelligenza artificiale</p>
+                <p>La piattaforma innovativa che sta trasformando l'educazione in Italia, combattendo la dispersione
+                    scolastica attraverso l'intelligenza artificiale</p>
 
                 <div class="cta-section">
-                    <div class="cta-card" onclick="showTeacherLogin()">
+                    <div class="cta-card" onclick="showTeacherLogin()" role="button" tabindex="0">
                         <h3>👨‍🏫 Sei un Docente?</h3>
-                        <p>Accedi alla dashboard per creare lezioni interattive, generare mappe concettuali e molto altro</p>
+                        <p>Accedi alla dashboard per creare lezioni interattive, generare mappe concettuali e molto
+                            altro</p>
                         <a href="#" class="btn btn-primary" onclick="showTeacherLogin()">Accedi Docente</a>
                     </div>
-                    <div class="cta-card" onclick="showStudentLogin()">
+                    <div class="cta-card" onclick="showStudentLogin()" role="button" tabindex="0">
                         <h3>🎓 Sei uno Studente?</h3>
-                        <p>Accedi ai materiali didattici della tua scuola e utilizza gli strumenti AI per studiare meglio</p>
+                        <p>Accedi ai materiali didattici della tua scuola e utilizza gli strumenti AI per studiare
+                            meglio</p>
                         <a href="#" class="btn btn-primary" onclick="showStudentLogin()">Accedi Studente</a>
                     </div>
-                    <div class="cta-card" onclick="showParentLogin()">
+                    <div class="cta-card" onclick="showParentLogin()" role="button" tabindex="0">
                         <h3>👪 Sei un Genitore?</h3>
                         <p>Monitora i progressi dei tuoi figli e rimani aggiornato sul loro rendimento</p>
                         <a href="#" class="btn btn-primary" onclick="showParentLogin()">Accedi Genitore</a>
                     </div>
-                    <div class="cta-card" onclick="showGenericLogin()">
+                    <div class="cta-card" onclick="showGenericLogin()" role="button" tabindex="0">
                         <h3>👤 Nuovo Utente?</h3>
-                        <p>Organizza appunti, registra audio, genera quiz e sfrutta l'AI per l'apprendimento personale</p>
+                        <p>Organizza appunti, registra audio, genera quiz e sfrutta l'AI per l'apprendimento personale
+                        </p>
                         <a href="#" class="btn btn-primary" onclick="showGenericLogin()">Inizia Ora</a>
                     </div>
                 </div>
@@ -2550,11 +2923,12 @@
                 <div class="partner-section">
                     <h3>Partner Tecnologico Ufficiale</h3>
                     <div class="partner-logo-container">
-                        <a href="https://www.codebase.com" target="_blank" class="partner-logo-link">
+                        <a href="https://www.codebase.it" target="_blank" class="partner-logo-link">
                             <div class="partner-logo-text">Codebase</div>
                         </a>
                     </div>
-                    <p style="margin-top: 1.5rem; color: var(--gray);">Collaboriamo con Codebase per lo sviluppo di soluzioni AI all'avanguardia</p>
+                    <p style="margin-top: 1.5rem; color: var(--gray);">Collaboriamo con Codebase per lo sviluppo di
+                        soluzioni AI all'avanguardia</p>
                 </div>
             </section>
 
@@ -2562,7 +2936,8 @@
             <section class="news-section" id="news">
                 <div class="section-header">
                     <h2>📰 IA e Apprendimento: Le Ultime Novità</h2>
-                    <p class="subtitle">Scopri come l'intelligenza artificiale sta rivoluzionando il mondo dell'educazione</p>
+                    <p class="subtitle">Scopri come l'intelligenza artificiale sta rivoluzionando il mondo
+                        dell'educazione</p>
                 </div>
 
                 <div class="news-grid">
@@ -2571,7 +2946,9 @@
                         <div class="news-content">
                             <div class="news-date">15 Ottobre 2025</div>
                             <h3 class="news-title">L'IA come Supporto, non Sostituzione</h3>
-                            <p class="news-excerpt">Scopri perché l'intelligenza artificiale dovrebbe essere vista come uno strumento di supporto per docenti e studenti, non come un sostituto dell'insegnamento tradizionale.</p>
+                            <p class="news-excerpt">Scopri perché l'intelligenza artificiale dovrebbe essere vista come
+                                uno strumento di supporto per docenti e studenti, non come un sostituto
+                                dell'insegnamento tradizionale.</p>
                             <a href="#" class="btn btn-outline">Leggi di più</a>
                         </div>
                     </div>
@@ -2581,7 +2958,9 @@
                         <div class="news-content">
                             <div class="news-date">10 Ottobre 2025</div>
                             <h3 class="news-title">Apprendimento Personalizzato con AI</h3>
-                            <p class="news-excerpt">Come gli algoritmi di machine learning stanno creando percorsi di apprendimento unici per ogni studente, adattandosi al loro ritmo e stile di apprendimento.</p>
+                            <p class="news-excerpt">Come gli algoritmi di machine learning stanno creando percorsi di
+                                apprendimento unici per ogni studente, adattandosi al loro ritmo e stile di
+                                apprendimento.</p>
                             <a href="#" class="btn btn-outline">Leggi di più</a>
                         </div>
                     </div>
@@ -2591,7 +2970,8 @@
                         <div class="news-content">
                             <div class="news-date">5 Ottobre 2025</div>
                             <h3 class="news-title">Analisi Predittiva nella Scuola</h3>
-                            <p class="news-excerpt">L'uso dell'IA per identificare precocemente gli studenti a rischio di abbandono scolastico e intervenire tempestivamente con supporto personalizzato.</p>
+                            <p class="news-excerpt">L'uso dell'IA per identificare precocemente gli studenti a rischio
+                                di abbandono scolastico e intervenire tempestivamente con supporto personalizzato.</p>
                             <a href="#" class="btn btn-outline">Leggi di più</a>
                         </div>
                     </div>
@@ -2661,10 +3041,14 @@
                                 <div class="pie-slice-inner"></div>
                             </div>
                             <div style="margin-top: 2rem; color: white; text-align: center;">
-                                <div style="margin: 0.5rem 0;"><span style="color: var(--accent);">●</span> Medie (36%)</div>
-                                <div style="margin: 0.5rem 0;"><span style="color: var(--primary);">●</span> Superiori (28%)</div>
-                                <div style="margin: 0.5rem 0;"><span style="color: var(--danger);">●</span> Primarie (17%)</div>
-                                <div style="margin: 0.5rem 0;"><span style="color: var(--warning);">●</span> Università (19%)</div>
+                                <div style="margin: 0.5rem 0;"><span style="color: var(--accent);">●</span> Medie (36%)
+                                </div>
+                                <div style="margin: 0.5rem 0;"><span style="color: var(--primary);">●</span> Superiori
+                                    (28%)</div>
+                                <div style="margin: 0.5rem 0;"><span style="color: var(--danger);">●</span> Primarie
+                                    (17%)</div>
+                                <div style="margin: 0.5rem 0;"><span style="color: var(--warning);">●</span> Università
+                                    (19%)</div>
                             </div>
                         </div>
 
@@ -2681,7 +3065,8 @@
                                 <div class="data-point" style="left: 75%; bottom: 67%;"></div>
                                 <div class="data-point" style="left: 100%; bottom: 87%;"></div>
                             </div>
-                            <div style="display: flex; justify-content: space-between; color: white; margin-top: 1rem; font-size: 0.9rem;">
+                            <div
+                                style="display: flex; justify-content: space-between; color: white; margin-top: 1rem; font-size: 0.9rem;">
                                 <span>2021</span>
                                 <span>2022</span>
                                 <span>2023</span>
@@ -2722,15 +3107,28 @@
                         </div>
 
                         <div class="story-text">
-                            <p><strong class="highlight">La storia di Marco:</strong> Marco frequentava il terzo anno quando ha iniziato ad accumulare lacune. La frustrazione cresceva, e stava considerando l'abbandono.</p>
+                            <p><strong class="highlight">La storia di Marco:</strong> Marco frequentava il terzo anno
+                                quando ha iniziato ad accumulare lacune. La frustrazione cresceva, e stava considerando
+                                l'abbandono.</p>
 
-                            <p>Poi la sua scuola ha adottato <strong class="highlight">Union</strong>. Attraverso la nostra piattaforma, Marco ha potuto accedere a <strong class="highlight">lezioni personalizzate</strong> che si adattavano al suo ritmo. I <strong class="highlight">riassunti AI</strong> lo hanno aiutato a recuperare, mentre le <strong class="highlight">mappe concettuali interattive</strong> hanno reso tutto comprensibile.</p>
+                            <p>Poi la sua scuola ha adottato <strong class="highlight">Union</strong>. Attraverso la
+                                nostra piattaforma, Marco ha potuto accedere a <strong class="highlight">lezioni
+                                    personalizzate</strong> che si adattavano al suo ritmo. I <strong
+                                    class="highlight">riassunti AI</strong> lo hanno aiutato a recuperare, mentre le
+                                <strong class="highlight">mappe concettuali interattive</strong> hanno reso tutto
+                                comprensibile.</p>
 
-                            <p>Oggi Marco è al quinto anno con media dell'8 e vuole iscriversi a ingegneria. La sua è una delle <strong class="highlight">migliaia di storie di successo</strong> che Union scrive ogni giorno.</p>
+                            <p>Oggi Marco è al quinto anno con media dell'8 e vuole iscriversi a ingegneria. La sua è
+                                una delle <strong class="highlight">migliaia di storie di successo</strong> che Union
+                                scrive ogni giorno.</p>
 
-                            <p><strong class="highlight">Il nostro impegno:</strong> Union non è solo tecnologia, è un <strong class="highlight">ponte tra studenti e futuro</strong>. Combiniamo AI, pedagogia avanzata e collaborazione per garantire che nessuno rimanga indietro.</p>
+                            <p><strong class="highlight">Il nostro impegno:</strong> Union non è solo tecnologia, è un
+                                <strong class="highlight">ponte tra studenti e futuro</strong>. Combiniamo AI, pedagogia
+                                avanzata e collaborazione per garantire che nessuno rimanga indietro.</p>
 
-                            <p><strong class="highlight">Risultati concreti:</strong> L'Italia ha superato con un anno di anticipo l'obiettivo PNRR del 10.2%, raggiungendo il 9.8% nel 2025. Union opera in oltre 247 scuole nazionali.</p>
+                            <p><strong class="highlight">Risultati concreti:</strong> L'Italia ha superato con un anno
+                                di anticipo l'obiettivo PNRR del 10.2%, raggiungendo il 9.8% nel 2025. Union opera in
+                                oltre 247 scuole nazionali.</p>
                         </div>
                     </div>
                 </div>
@@ -2746,7 +3144,8 @@
                     <div class="service-card">
                         <div class="service-icon">🗺️</div>
                         <h3>Mappe Concettuali AI</h3>
-                        <p>Genera automaticamente mappe interattive da qualsiasi argomento per visualizzare connessioni.</p>
+                        <p>Genera automaticamente mappe interattive da qualsiasi argomento per visualizzare connessioni.
+                        </p>
                         <ul class="service-features">
                             <li>Generazione automatica</li>
                             <li>Personalizzazione completa</li>
@@ -2816,27 +3215,33 @@
                     <div class="privacy-grid">
                         <div class="privacy-card">
                             <h4>🔒 Crittografia End-to-End</h4>
-                            <p>Tutti i dati sono crittografati con standard militari AES-256. Nessuno, nemmeno noi, può accedere ai tuoi contenuti privati.</p>
+                            <p>Tutti i dati sono crittografati con standard militari AES-256. Nessuno, nemmeno noi, può
+                                accedere ai tuoi contenuti privati.</p>
                         </div>
                         <div class="privacy-card">
                             <h4>🇪🇺 GDPR Compliant</h4>
-                            <p>Rispettiamo completamente il Regolamento Europeo sulla Protezione dei Dati. I tuoi dati rimangono in server UE.</p>
+                            <p>Rispettiamo completamente il Regolamento Europeo sulla Protezione dei Dati. I tuoi dati
+                                rimangono in server UE.</p>
                         </div>
                         <div class="privacy-card">
                             <h4>🛡️ Certificazioni ISO</h4>
-                            <p>Certificati ISO 27001 per la gestione della sicurezza delle informazioni e ISO 27018 per la privacy nel cloud.</p>
+                            <p>Certificati ISO 27001 per la gestione della sicurezza delle informazioni e ISO 27018 per
+                                la privacy nel cloud.</p>
                         </div>
                         <div class="privacy-card">
                             <h4>👤 Controllo Totale</h4>
-                            <p>Hai il controllo completo sui tuoi dati: visualizza, esporta o elimina qualsiasi informazione in qualsiasi momento.</p>
+                            <p>Hai il controllo completo sui tuoi dati: visualizza, esporta o elimina qualsiasi
+                                informazione in qualsiasi momento.</p>
                         </div>
                         <div class="privacy-card">
                             <h4>🚫 Zero Vendita Dati</h4>
-                            <p>Non vendiamo mai i tuoi dati a terze parti. Il nostro modello di business si basa solo sugli abbonamenti.</p>
+                            <p>Non vendiamo mai i tuoi dati a terze parti. Il nostro modello di business si basa solo
+                                sugli abbonamenti.</p>
                         </div>
                         <div class="privacy-card">
                             <h4>🔐 Autenticazione Sicura</h4>
-                            <p>Autenticazione a due fattori, Single Sign-On e gestione avanzata delle sessioni per massima sicurezza.</p>
+                            <p>Autenticazione a due fattori, Single Sign-On e gestione avanzata delle sessioni per
+                                massima sicurezza.</p>
                         </div>
                     </div>
                 </div>
@@ -2887,7 +3292,8 @@
                     </div>
 
                     <div class="survey-step" id="step2">
-                        <div class="survey-question">Quanto sei soddisfatto del tuo attuale ambiente di apprendimento?</div>
+                        <div class="survey-question">Quanto sei soddisfatto del tuo attuale ambiente di apprendimento?
+                        </div>
                         <div class="survey-options">
                             <div class="survey-option" onclick="selectOption(this, '1')">
                                 <div class="survey-option-icon">😞</div>
@@ -2916,9 +3322,11 @@
                         </div>
                     </div>
 
-                    <div class="survey-step" id="step3">
+                    <div class="survey-step" id="step3" data-requires="textarea">
                         <div class="survey-question">Cosa miglioreresti del tuo attuale metodo di apprendimento?</div>
-                        <textarea class="survey-textarea" placeholder="Scrivi qui i tuoi suggerimenti..."></textarea>
+                        <textarea class="survey-textarea" placeholder="Scrivi qui i tuoi suggerimenti..."
+                            aria-describedby="step3-help"></textarea>
+                        <small id="step3-help" class="help-text">Questo campo è opzionale ma apprezzato</small>
                         <div class="survey-navigation">
                             <button class="btn btn-outline" onclick="prevStep(2)">Indietro</button>
                             <button class="btn btn-primary" onclick="nextStep(4)">Avanti</button>
@@ -2981,9 +3389,11 @@
                         </div>
                     </div>
 
-                    <div class="survey-step" id="step6">
+                    <div class="survey-step" id="step6" data-requires="textarea">
                         <div class="survey-question">Altri commenti o suggerimenti?</div>
-                        <textarea class="survey-textarea" placeholder="Condividi altre idee per migliorare Union..."></textarea>
+                        <textarea class="survey-textarea" placeholder="Condividi altre idee per migliorare Union..."
+                            aria-describedby="step6-help"></textarea>
+                        <small id="step6-help" class="help-text">Questo campo è opzionale ma apprezzato</small>
                         <div class="survey-navigation">
                             <button class="btn btn-outline" onclick="prevStep(5)">Indietro</button>
                             <button class="btn btn-primary" onclick="submitSurvey()">Invia Sondaggio</button>
@@ -2995,7 +3405,7 @@
                             <h2>🎉 Grazie per il tuo feedback!</h2>
                             <p class="subtitle">Ecco i risultati aggregati del sondaggio</p>
                         </div>
-                        
+
                         <div class="result-chart">
                             <h3>📈 Soddisfazione Generale</h3>
                             <div class="bar-chart-3d">
@@ -3053,16 +3463,18 @@
                 <div class="footer-grid">
                     <div class="footer-section">
                         <h3>UNION</h3>
-                        <p>La piattaforma che rivoluziona l'educazione in Italia, combattendo la dispersione scolastica attraverso innovazione e AI.</p>
-                        <a href="#" class="contact-button" onclick="showContactPage(event)">📧 Contattaci per Supporto</a>
+                        <p>La piattaforma che rivoluziona l'educazione in Italia, combattendo la dispersione scolastica
+                            attraverso innovazione e AI.</p>
+                        <a href="#" class="contact-button" onclick="showContactPage(event)">📧 Contattaci per
+                            Supporto</a>
                     </div>
                     <div class="footer-section">
                         <h3>Servizi</h3>
                         <ul>
-                            <li><a href="#">Mappe Concettuali</a></li>
-                            <li><a href="#">Riassunti AI</a></li>
-                            <li><a href="#">Quiz Interattivi</a></li>
-                            <li><a href="#">Registrazione Audio</a></li>
+                            <li><a href="#" onclick="openDemo('mindmap')">Mappe Concettuali</a></li>
+                            <li><a href="#" onclick="openDemo('summary')">Riassunti AI</a></li>
+                            <li><a href="#" onclick="openDemo('quiz')">Quiz Interattivi</a></li>
+                            <li><a href="#" onclick="openEnhancedRecording('generic')">Registrazione Audio</a></li>
                             <li><a href="#">Tutor AI</a></li>
                         </ul>
                     </div>
@@ -3071,19 +3483,21 @@
                         <ul>
                             <li><a href="#" onclick="showPrivacyPage(event)">Privacy Policy</a></li>
                             <li><a href="#" onclick="showCookiePage(event)">Cookie Policy</a></li>
-                            <li><a href="#">Termini di Servizio</a></li>
-                            <li><a href="#">Chi Siamo</a></li>
+                            <li><a href="#" onclick="showPrivacyPage(event)">Termini di Servizio</a></li>
+                            <li><a href="#" onclick="showPrivacyPage(event)">Chi Siamo</a></li>
                             <li><a href="#" onclick="showBullyingPage(event)">Area Bullismo</a></li>
+                            <li><a href="#privacy-security" onclick="showPrivacySecurityPage(event)">Privacy e Sicurezza
+                                    Dati</a></li>
                         </ul>
                     </div>
                     <div class="footer-section">
                         <h3>Supporto</h3>
                         <ul>
                             <li><a href="#" onclick="showContactPage(event)">Assistenza Tecnica</a></li>
-                            <li><a href="#">Centro Assistenza</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Documentazione</a></li>
-                            <li><a href="#">support@union.it</a></li>
+                            <li><a href="#" onclick="showContactPage(event)">Centro Assistenza</a></li>
+                            <li><a href="#" onclick="showContactPage(event)">FAQ</a></li>
+                            <li><a href="#" onclick="showContactPage(event)">Documentazione</a></li>
+                            <li><a href="mailto:support@union.it">support@union.it</a></li>
                         </ul>
                     </div>
                 </div>
@@ -3115,17 +3529,18 @@
                 <div class="class-selector">
                     <h3>Seleziona Classe e Materia</h3>
                     <div class="class-grid">
-                        <div class="class-card active" onclick="selectClass(this, '3A-matematica')">
+                        <div class="class-card active" onclick="selectClass(this, '3A-matematica')" role="button"
+                            tabindex="0">
                             <div class="material-icon">📐</div>
                             <h4>3A - Matematica</h4>
                             <p>24 studenti</p>
                         </div>
-                        <div class="class-card" onclick="selectClass(this, '3A-scienze')">
+                        <div class="class-card" onclick="selectClass(this, '3A-scienze')" role="button" tabindex="0">
                             <div class="material-icon">🔬</div>
                             <h4>3A - Scienze</h4>
                             <p>24 studenti</p>
                         </div>
-                        <div class="class-card" onclick="selectClass(this, '4B-matematica')">
+                        <div class="class-card" onclick="selectClass(this, '4B-matematica')" role="button" tabindex="0">
                             <div class="material-icon">📐</div>
                             <h4>4B - Matematica</h4>
                             <p>22 studenti</p>
@@ -3134,32 +3549,32 @@
                 </div>
 
                 <div class="action-cards">
-                    <div class="action-card" onclick="openEnhancedRecording('teacher')">
+                    <div class="action-card" onclick="openEnhancedRecording('teacher')" role="button" tabindex="0">
                         <div class="action-card-icon">🎤</div>
                         <h3>Registra Lezione</h3>
                         <p>Registra e trascrivi automaticamente con controlli avanzati</p>
                     </div>
-                    <div class="action-card" onclick="openDemo('mindmap')">
+                    <div class="action-card" onclick="openDemo('mindmap')" role="button" tabindex="0">
                         <div class="action-card-icon">🗺️</div>
                         <h3>Genera Mappa Concettuale</h3>
                         <p>Crea mappe automaticamente da testi</p>
                     </div>
-                    <div class="action-card" onclick="openDemo('summary')">
+                    <div class="action-card" onclick="openDemo('summary')" role="button" tabindex="0">
                         <div class="action-card-icon">📝</div>
                         <h3>Crea Riassunto</h3>
                         <p>Genera riassunti efficaci con AI</p>
                     </div>
-                    <div class="action-card" onclick="openDemo('quiz')">
+                    <div class="action-card" onclick="openDemo('quiz')" role="button" tabindex="0">
                         <div class="action-card-icon">🎯</div>
                         <h3>Quiz Interattivi</h3>
                         <p>Crea verifiche personalizzate</p>
                     </div>
-                    <div class="action-card" onclick="switchTeacherTab('analytics')">
+                    <div class="action-card" onclick="switchTeacherTab('analytics')" role="button" tabindex="0">
                         <div class="action-card-icon">📊</div>
                         <h3>Analytics Classe</h3>
                         <p>Monitora progressi degli studenti</p>
                     </div>
-                    <div class="action-card" onclick="switchTeacherTab('research')">
+                    <div class="action-card" onclick="switchTeacherTab('research')" role="button" tabindex="0">
                         <div class="action-card-icon">🔍</div>
                         <h3>Approfondimenti AI</h3>
                         <p>Genera contenuti di approfondimento</p>
@@ -3199,7 +3614,7 @@
             <div id="teacher-classes" class="tab-content">
                 <h2>Le Mie Classi</h2>
                 <div class="class-grid" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
-                    <div class="class-card active">
+                    <div class="class-card active" role="button" tabindex="0">
                         <div class="material-icon">📐</div>
                         <h4>3A - Matematica</h4>
                         <p>24 studenti</p>
@@ -3208,7 +3623,7 @@
                         </div>
                         <p>75% completamento programma</p>
                     </div>
-                    <div class="class-card">
+                    <div class="class-card" role="button" tabindex="0">
                         <div class="material-icon">🔬</div>
                         <h4>3A - Scienze</h4>
                         <p>24 studenti</p>
@@ -3247,17 +3662,17 @@
             <div id="teacher-research" class="tab-content">
                 <h2>Approfondimenti AI</h2>
                 <div class="action-cards">
-                    <div class="action-card" onclick="openResearch('matematica')">
+                    <div class="action-card" onclick="openResearch('matematica')" role="button" tabindex="0">
                         <div class="action-card-icon">📐</div>
                         <h3>Matematica Avanzata</h3>
                         <p>Approfondisci concetti matematici complessi</p>
                     </div>
-                    <div class="action-card" onclick="openResearch('scienze')">
+                    <div class="action-card" onclick="openResearch('scienze')" role="button" tabindex="0">
                         <div class="action-card-icon">🔬</div>
                         <h3>Scienze Sperimentali</h3>
                         <p>Risorse per laboratori e esperimenti</p>
                     </div>
-                    <div class="action-card" onclick="openResearch('metodologie')">
+                    <div class="action-card" onclick="openResearch('metodologie')" role="button" tabindex="0">
                         <div class="action-card-icon">💡</div>
                         <h3>Metodologie Didattiche</h3>
                         <p>Nuove strategie di insegnamento</p>
@@ -3284,11 +3699,16 @@
                 <div class="sidebar">
                     <h3>Le Tue Materie</h3>
                     <ul class="subject-list">
-                        <li class="subject-item active" onclick="selectSubject(this, 'matematica')">Matematica</li>
-                        <li class="subject-item" onclick="selectSubject(this, 'italiano')">Italiano</li>
-                        <li class="subject-item" onclick="selectSubject(this, 'scienze')">Scienze</li>
-                        <li class="subject-item" onclick="selectSubject(this, 'inglese')">Inglese</li>
-                        <li class="subject-item" onclick="selectSubject(this, 'storia')">Storia</li>
+                        <li class="subject-item active" onclick="selectSubject(this, 'matematica')" role="button"
+                            tabindex="0">Matematica</li>
+                        <li class="subject-item" onclick="selectSubject(this, 'italiano')" role="button" tabindex="0">
+                            Italiano</li>
+                        <li class="subject-item" onclick="selectSubject(this, 'scienze')" role="button" tabindex="0">
+                            Scienze</li>
+                        <li class="subject-item" onclick="selectSubject(this, 'inglese')" role="button" tabindex="0">
+                            Inglese</li>
+                        <li class="subject-item" onclick="selectSubject(this, 'storia')" role="button" tabindex="0">
+                            Storia</li>
                     </ul>
                 </div>
 
@@ -3298,27 +3718,28 @@
                         <p>Ultimo accesso: oggi alle 14:30</p>
 
                         <div class="action-cards">
-                            <div class="action-card" onclick="openEnhancedRecording('student')">
+                            <div class="action-card" onclick="openEnhancedRecording('student')" role="button"
+                                tabindex="0">
                                 <div class="action-card-icon">🎤</div>
                                 <h3>Registra Appunti</h3>
                                 <p>Registra e trascrivi con controlli avanzati</p>
                             </div>
-                            <div class="action-card" onclick="openDemo('mindmap')">
+                            <div class="action-card" onclick="openDemo('mindmap')" role="button" tabindex="0">
                                 <div class="action-card-icon">🗺️</div>
                                 <h3>Genera Mappa</h3>
                                 <p>Crea mappe concettuali automaticamente</p>
                             </div>
-                            <div class="action-card" onclick="openDemo('summary')">
+                            <div class="action-card" onclick="openDemo('summary')" role="button" tabindex="0">
                                 <div class="action-card-icon">📝</div>
                                 <h3>Crea Riassunto</h3>
                                 <p>Genera riassunti efficaci con AI</p>
                             </div>
-                            <div class="action-card" onclick="openDemo('quiz')">
+                            <div class="action-card" onclick="openDemo('quiz')" role="button" tabindex="0">
                                 <div class="action-card-icon">🎯</div>
                                 <h3>Quiz di Verifica</h3>
                                 <p>Testa le tue conoscenze</p>
                             </div>
-                            <div class="action-card" onclick="showBullyingPage()">
+                            <div class="action-card" onclick="showBullyingPage()" role="button" tabindex="0">
                                 <div class="action-card-icon">🚫</div>
                                 <h3>Area Bullismo</h3>
                                 <p>Segnala episodi di bullismo</p>
@@ -3326,17 +3747,17 @@
                         </div>
 
                         <div class="material-grid">
-                            <div class="material-card">
+                            <div class="material-card" role="button" tabindex="0">
                                 <div class="material-icon">📐</div>
                                 <h4>Equazioni di Secondo Grado</h4>
                                 <p>Lezione del 10/10/2025</p>
                             </div>
-                            <div class="material-card">
+                            <div class="material-card" role="button" tabindex="0">
                                 <div class="material-icon">📐</div>
                                 <h4>Teorema di Pitagora</h4>
                                 <p>Lezione del 05/10/2025</p>
                             </div>
-                            <div class="material-card">
+                            <div class="material-card" role="button" tabindex="0">
                                 <div class="material-icon">📐</div>
                                 <h4>Geometria Analitica</h4>
                                 <p>Lezione del 01/10/2025</p>
@@ -3345,7 +3766,8 @@
 
                         <!-- NEW: Teacher Contact Button -->
                         <div style="margin-top: 2rem; text-align: center;">
-                            <button class="btn btn-primary" onclick="openContactTeacherModal()">📧 Dubbi su qualche argomento? Scrivi al prof</button>
+                            <button class="btn btn-primary" onclick="openContactTeacherModal()">📧 Dubbi su qualche
+                                argomento? Scrivi al prof</button>
                         </div>
                     </div>
                 </div>
@@ -3366,8 +3788,10 @@
                 <div class="sidebar">
                     <h3>I Tuoi Figli</h3>
                     <ul class="subject-list" id="children-list">
-                        <li class="subject-item active" onclick="selectChild(this, 'marco-rossi')">Marco Rossi - 3A</li>
-                        <li class="subject-item" onclick="selectChild(this, 'lucia-bianchi')">Lucia Bianchi - 2B</li>
+                        <li class="subject-item active" onclick="selectChild(this, 'marco-rossi')" role="button"
+                            tabindex="0">Marco Rossi - 3A</li>
+                        <li class="subject-item" onclick="selectChild(this, 'lucia-bianchi')" role="button"
+                            tabindex="0">Lucia Bianchi - 2B</li>
                     </ul>
                 </div>
 
@@ -3427,7 +3851,8 @@
 
                         <!-- NEW: Teacher Contact Button -->
                         <div style="margin-top: 2rem; text-align: center;">
-                            <button class="btn btn-primary" onclick="openContactTeacherModal()">📧 Dubbi su qualche argomento? Scrivi al prof</button>
+                            <button class="btn btn-primary" onclick="openContactTeacherModal()">📧 Dubbi su qualche
+                                argomento? Scrivi al prof</button>
                         </div>
                     </div>
                 </div>
@@ -3447,22 +3872,22 @@
             <div class="folders-section">
                 <h2>Le Tue Cartelle</h2>
                 <div class="folder-grid">
-                    <div class="folder-card" onclick="openFolder('tecnologia')">
+                    <div class="folder-card" onclick="openFolder('tecnologia')" role="button" tabindex="0">
                         <div class="folder-icon">💻</div>
                         <div class="folder-name">Tecnologia</div>
                         <div class="folder-count">15 file</div>
                     </div>
-                    <div class="folder-card" onclick="openFolder('lingue')">
+                    <div class="folder-card" onclick="openFolder('lingue')" role="button" tabindex="0">
                         <div class="folder-icon">🌐</div>
                         <div class="folder-name">Lingue</div>
                         <div class="folder-count">8 file</div>
                     </div>
-                    <div class="folder-card" onclick="openFolder('business')">
+                    <div class="folder-card" onclick="openFolder('business')" role="button" tabindex="0">
                         <div class="folder-icon">💼</div>
                         <div class="folder-name">Business</div>
                         <div class="folder-count">12 file</div>
                     </div>
-                    <div class="folder-card add-folder" onclick="createNewFolder()">
+                    <div class="folder-card add-folder" onclick="createNewFolder()" role="button" tabindex="0">
                         <div class="folder-icon">+</div>
                         <div class="folder-name">Nuova Cartella</div>
                     </div>
@@ -3470,27 +3895,27 @@
             </div>
 
             <div class="action-cards">
-                <div class="action-card" onclick="openEnhancedRecording('generic')">
+                <div class="action-card" onclick="openEnhancedRecording('generic')" role="button" tabindex="0">
                     <div class="action-card-icon">🎤</div>
                     <h3>Registra Audio</h3>
                     <p>Registra e trascrivi con controlli avanzati</p>
                 </div>
-                <div class="action-card" onclick="openDemo('mindmap')">
+                <div class="action-card" onclick="openDemo('mindmap')" role="button" tabindex="0">
                     <div class="action-card-icon">🗺️</div>
                     <h3>Genera Mappa</h3>
                     <p>Crea mappe concettuali automaticamente</p>
                 </div>
-                <div class="action-card" onclick="openDemo('summary')">
+                <div class="action-card" onclick="openDemo('summary')" role="button" tabindex="0">
                     <div class="action-card-icon">📝</div>
                     <h3>Crea Riassunto</h3>
                     <p>Genera riassunti efficaci con AI</p>
                 </div>
-                <div class="action-card" onclick="openDemo('quiz')">
+                <div class="action-card" onclick="openDemo('quiz')" role="button" tabindex="0">
                     <div class="action-card-icon">🎯</div>
                     <h3>Quiz di Verifica</h3>
                     <p>Testa le tue conoscenze</p>
                 </div>
-                <div class="action-card" onclick="showBullyingPage()">
+                <div class="action-card" onclick="showBullyingPage()" role="button" tabindex="0">
                     <div class="action-card-icon">🚫</div>
                     <h3>Area Bullismo</h3>
                     <p>Segnala episodi di bullismo</p>
@@ -3515,23 +3940,28 @@
                 </div>
 
                 <div class="story-text">
-                    <p>Il bullismo può manifestarsi in molte forme: fisiche, verbali, psicologiche e online (cyberbullismo). È importante riconoscerlo e denunciarlo.</p>
-                    <p>Se sei vittima, testimone o anche se hai agito da bullo e vuoi cambiare, questa è la sezione giusta. I docenti e la scuola intera sono qui per aiutare.</p>
-                    <p>Ricorda: denunciare non è fare la spia, è un atto di coraggio che aiuta te e gli altri. I docenti apprezzeranno la tua onestà e faranno di tutto per risolvere la situazione in modo costruttivo.</p>
+                    <p>Il bullismo può manifestarsi in molte forme: fisiche, verbali, psicologiche e online
+                        (cyberbullismo). È importante riconoscerlo e denunciarlo.</p>
+                    <p>Se sei vittima, testimone o anche se hai agito da bullo e vuoi cambiare, questa è la sezione
+                        giusta. I docenti e la scuola intera sono qui per aiutare.</p>
+                    <p>Ricorda: denunciare non è fare la spia, è un atto di coraggio che aiuti te e gli altri. I docenti
+                        apprezzeranno la tua onestà e faranno di tutto per risolvere la situazione in modo costruttivo.
+                    </p>
                 </div>
 
                 <div class="bullying-options">
-                    <div class="bullying-option-card" onclick="selectBullyingType('victim')">
+                    <div class="bullying-option-card" onclick="selectBullyingType('victim')" role="button" tabindex="0">
                         <div class="bullying-icon">😔</div>
                         <h3>Sono una vittima</h3>
                         <p>Stai subendo bullismo? Raccontaci cosa sta succedendo.</p>
                     </div>
-                    <div class="bullying-option-card" onclick="selectBullyingType('witness')">
+                    <div class="bullying-option-card" onclick="selectBullyingType('witness')" role="button"
+                        tabindex="0">
                         <div class="bullying-icon">👀</div>
                         <h3>Sono un testimone</h3>
                         <p>Hai assistito a episodi di bullismo? Segnalalo.</p>
                     </div>
-                    <div class="bullying-option-card" onclick="selectBullyingType('bully')">
+                    <div class="bullying-option-card" onclick="selectBullyingType('bully')" role="button" tabindex="0">
                         <div class="bullying-icon">😟</div>
                         <h3>Mi sono comportato da bullo</h3>
                         <p>Vuoi cambiare? Apprezziamo la tua onestà.</p>
@@ -3540,29 +3970,34 @@
 
                 <div id="bullying-form" style="display: none;">
                     <h3 id="bullying-form-title">Segnalazione Bullismo</h3>
-                    <div class="form-group">
-                        <label for="bullying-description">Racconta cosa è successo:</label>
-                        <textarea id="bullying-description" class="form-control" rows="5" placeholder="Descrivi l'episodio in dettaglio..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="bullying-frequency">Quante volte è successo?</label>
-                        <select id="bullying-frequency" class="form-control">
-                            <option value="">Seleziona...</option>
-                            <option value="once">Una volta</option>
-                            <option value="few">Poche volte</option>
-                            <option value="often">Spesso</option>
-                            <option value="daily">Quasi ogni giorno</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="bullying-involved">Chi è coinvolto? (nomi, se li conosci)</label>
-                        <input type="text" id="bullying-involved" class="form-control" placeholder="Nomi delle persone coinvolte...">
-                    </div>
-                    <div class="form-group">
-                        <label for="bullying-date">Data dell'episodio (se ricordi):</label>
-                        <input type="date" id="bullying-date" class="form-control">
-                    </div>
-                    <button class="btn btn-primary" onclick="submitBullyingReport()">Invia Segnalazione</button>
+                    <form novalidate>
+                        <div class="form-group">
+                            <label for="bullying-description">Racconta cosa è successo:</label>
+                            <textarea id="bullying-description" class="form-control" rows="5"
+                                placeholder="Descrivi l'episodio in dettaglio..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="bullying-frequency">Quante volte è successo?</label>
+                            <select id="bullying-frequency" class="form-control">
+                                <option value="">Seleziona...</option>
+                                <option value="once">Una volta</option>
+                                <option value="few">Poche volte</option>
+                                <option value="often">Spesso</option>
+                                <option value="daily">Quasi ogni giorno</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bullying-involved">Chi è coinvolto? (nomi, se li conosci)</label>
+                            <input type="text" id="bullying-involved" class="form-control"
+                                placeholder="Nomi delle persone coinvolte...">
+                        </div>
+                        <div class="form-group">
+                            <label for="bullying-date">Data dell'episodio (se ricordi):</label>
+                            <input type="date" id="bullying-date" class="form-control">
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="submitBullyingReport()">Invia
+                            Segnalazione</button>
+                    </form>
                 </div>
 
                 <div id="bullying-thanks" style="display: none; text-align: center; padding: 2rem;">
@@ -3591,34 +4026,41 @@
                 </div>
 
                 <div class="contact-form">
-                    <div class="form-group">
-                        <label for="contact-name">Nome *</label>
-                        <input type="text" id="contact-name" class="form-control" placeholder="Il tuo nome" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-surname">Cognome *</label>
-                        <input type="text" id="contact-surname" class="form-control" placeholder="Il tuo cognome" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-email">Email *</label>
-                        <input type="email" id="contact-email" class="form-control" placeholder="la.tua.email@esempio.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-subject">Oggetto *</label>
-                        <select id="contact-subject" class="form-control" required>
-                            <option value="">Seleziona un oggetto...</option>
-                            <option value="technical">Problema tecnico</option>
-                            <option value="account">Problema account</option>
-                            <option value="billing">Fatturazione</option>
-                            <option value="feedback">Feedback</option>
-                            <option value="other">Altro</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-message">Messaggio *</label>
-                        <textarea id="contact-message" class="form-control" rows="5" placeholder="Descrivi il problema o la richiesta..." required></textarea>
-                    </div>
-                    <button class="btn btn-primary" onclick="submitContactForm()">Invia Messaggio</button>
+                    <form novalidate>
+                        <div class="form-group">
+                            <label for="contact-name">Nome *</label>
+                            <input type="text" id="contact-name" class="form-control" placeholder="Il tuo nome"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-surname">Cognome *</label>
+                            <input type="text" id="contact-surname" class="form-control" placeholder="Il tuo cognome"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email *</label>
+                            <input type="email" id="contact-email" class="form-control"
+                                placeholder="la.tua.email@esempio.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-subject">Oggetto *</label>
+                            <select id="contact-subject" class="form-control" required>
+                                <option value="">Seleziona un oggetto...</option>
+                                <option value="technical">Problema tecnico</option>
+                                <option value="account">Problema account</option>
+                                <option value="billing">Fatturazione</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Altro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Messaggio *</label>
+                            <textarea id="contact-message" class="form-control" rows="5"
+                                placeholder="Descrivi il problema o la richiesta..." required></textarea>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="submitContactForm()">Invia
+                            Messaggio</button>
+                    </form>
                 </div>
 
                 <div id="contact-thanks" style="display: none; text-align: center; padding: 2rem;">
@@ -3640,23 +4082,28 @@
                 <p>Invia un messaggio al tuo docente per chiarire dubbi</p>
             </div>
             <div class="contact-teacher-form">
-                <div class="form-group">
-                    <label for="teacher-select">Seleziona Docente</label>
-                    <select id="teacher-select" class="form-control">
-                        <option value="rossi">Prof. Rossi - Matematica</option>
-                        <option value="bianchi">Prof. Bianchi - Italiano</option>
-                        <option value="verdi">Prof. Verdi - Scienze</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="teacher-subject">Oggetto</label>
-                    <input type="text" id="teacher-subject" class="form-control" placeholder="Oggetto del messaggio...">
-                </div>
-                <div class="form-group">
-                    <label for="teacher-message">Messaggio</label>
-                    <textarea id="teacher-message" class="form-control" rows="5" placeholder="Scrivi il tuo messaggio..."></textarea>
-                </div>
-                <button class="btn btn-primary" onclick="sendMessageToTeacher()">Invia Messaggio</button>
+                <form novalidate>
+                    <div class="form-group">
+                        <label for="teacher-select">Seleziona Docente</label>
+                        <select id="teacher-select" class="form-control">
+                            <option value="rossi">Prof. Rossi - Matematica</option>
+                            <option value="bianchi">Prof. Bianchi - Italiano</option>
+                            <option value="verdi">Prof. Verdi - Scienze</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-subject">Oggetto</label>
+                        <input type="text" id="teacher-subject" class="form-control"
+                            placeholder="Oggetto del messaggio...">
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-message">Messaggio</label>
+                        <textarea id="teacher-message" class="form-control" rows="5"
+                            placeholder="Scrivi il tuo messaggio..."></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="sendMessageToTeacher()">Invia
+                        Messaggio</button>
+                </form>
             </div>
         </div>
     </div>
@@ -3687,14 +4134,18 @@
                 </button>
 
                 <div class="recording-controls">
-                    <button class="control-button stop" id="stopButton" onclick="stopRecording()" disabled>⏹️ Stop</button>
-                    <button class="control-button resume" id="resumeButton" onclick="resumeRecording()" disabled>▶️ Riprendi</button>
+                    <button class="control-button stop" id="stopButton" onclick="stopRecording()" disabled>⏹️
+                        Stop</button>
+                    <button class="control-button resume" id="resumeButton" onclick="resumeRecording()" disabled>▶️
+                        Riprendi</button>
                 </div>
 
                 <div class="demo-actions">
                     <button class="demo-btn demo-btn-primary" onclick="saveRecording()">💾 Salva Registrazione</button>
-                    <button class="demo-btn demo-btn-primary" onclick="transcribeRecording()">📝 Trascrivi Audio</button>
-                    <button class="demo-btn demo-btn-primary" onclick="generateSummaryFromAudio()">📋 Genera Riassunto</button>
+                    <button class="demo-btn demo-btn-primary" onclick="transcribeRecording()">📝 Trascrivi
+                        Audio</button>
+                    <button class="demo-btn demo-btn-primary" onclick="generateSummaryFromAudio()">📋 Genera
+                        Riassunto</button>
                 </div>
 
                 <div class="transcription-area" id="transcriptionArea">
@@ -3743,21 +4194,25 @@
         let recordingTime = 0;
         let selectedRole = 'student';
         let selectedBullyingType = '';
+        let isMobileMenuOpen = false;
 
         // Inizializzazione
-        document.addEventListener('DOMContentLoaded', function() {
-            // Animazione scroll per header
-            window.addEventListener('scroll', function() {
+        document.addEventListener('DOMContentLoaded', function () {
+            // Inizializzazioni esistenti
+            window.addEventListener('scroll', function () {
                 const header = document.getElementById('header');
                 if (window.scrollY > 50) {
                     header.classList.add('scrolled');
                 } else {
                     header.classList.remove('scrolled');
                 }
-
-                // Animazione sezioni al scroll
                 animateOnScroll();
             });
+
+            // Nuove inizializzazioni
+            initMobileMenu();
+            updateBackButton();
+            initFormValidation();
 
             // Animazione iniziale
             animateOnScroll();
@@ -3767,17 +4222,73 @@
             backToHome();
         });
 
+        // Inizializzazione Menu Hamburger
+        function initMobileMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const backButton = document.querySelector('.back-button');
+
+            if (hamburger) {
+                hamburger.addEventListener('click', toggleMobileMenu);
+            }
+
+            // Mostra/nascondi pulsante indietro
+            if (backButton) {
+                backButton.style.display = window.history.length > 1 ? 'block' : 'none';
+            }
+
+            // Chiudi menu al click fuori
+            document.addEventListener('click', (e) => {
+                if (isMobileMenuOpen &&
+                    !e.target.closest('.nav-menu') &&
+                    !e.target.closest('.hamburger')) {
+                    closeMobileMenu();
+                }
+            });
+
+            // Chiudi con ESC
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && isMobileMenuOpen) {
+                    closeMobileMenu();
+                }
+            });
+        }
+
+        function toggleMobileMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+
+            isMobileMenuOpen = !isMobileMenuOpen;
+            hamburger.setAttribute('aria-expanded', isMobileMenuOpen);
+            navMenu.classList.toggle('active');
+
+            // Trap focus nel menu quando aperto
+            if (isMobileMenuOpen) {
+                const firstLink = navMenu.querySelector('a');
+                if (firstLink) firstLink.focus();
+            }
+        }
+
+        function closeMobileMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+
+            isMobileMenuOpen = false;
+            hamburger.setAttribute('aria-expanded', 'false');
+            navMenu.classList.remove('active');
+        }
+
         // Animazione sezioni al scroll
         function animateOnScroll() {
             const sections = document.querySelectorAll('.section-header, .stat-card, .chart-3d-container');
-            
+
             sections.forEach(section => {
                 const sectionTop = section.getBoundingClientRect().top;
                 const windowHeight = window.innerHeight;
-                
+
                 if (sectionTop < windowHeight * 0.85) {
                     section.classList.add('visible');
-                    
+
                     if (section.classList.contains('chart-3d-container')) {
                         section.classList.add('animated');
                     }
@@ -3790,12 +4301,12 @@
             const bars = document.querySelectorAll('.bar-3d');
             const pie = document.querySelector('.pie-chart-3d');
             const line = document.querySelector('.line-chart-3d');
-            
+
             setTimeout(() => {
                 bars.forEach(bar => {
                     bar.classList.add('animated');
                 });
-                
+
                 if (pie) pie.classList.add('animated');
                 if (line) line.classList.add('animated');
             }, 1000);
@@ -3806,18 +4317,21 @@
             hideAllPages();
             document.getElementById('homepage').style.display = 'block';
             window.scrollTo(0, 0);
+            updateBackButton();
         }
 
         function showTeacherLogin() {
             hideAllPages();
             document.getElementById('teacher-dashboard').classList.add('active');
             window.scrollTo(0, 0);
+            updateBackButton();
         }
 
         function showStudentLogin() {
             hideAllPages();
             document.getElementById('student-dashboard').classList.add('active');
             window.scrollTo(0, 0);
+            updateBackButton();
         }
 
         // NEW: Parent Dashboard Functions
@@ -3825,6 +4339,7 @@
             hideAllPages();
             document.getElementById('parent-dashboard').classList.add('active');
             window.scrollTo(0, 0);
+            updateBackButton();
         }
 
         function selectChild(element, childId) {
@@ -3841,6 +4356,7 @@
             hideAllPages();
             document.getElementById('generic-dashboard').classList.add('active');
             window.scrollTo(0, 0);
+            updateBackButton();
         }
 
         // NEW: Bullying Page Functions
@@ -3849,6 +4365,7 @@
             hideAllPages();
             document.getElementById('bullying-page').classList.add('active');
             window.scrollTo(0, 0);
+            updateBackButton();
         }
 
         function selectBullyingType(type) {
@@ -3882,6 +4399,7 @@
             hideAllPages();
             document.getElementById('contact-page').classList.add('active');
             window.scrollTo(0, 0);
+            updateBackButton();
         }
 
         function submitContactForm() {
@@ -3913,6 +4431,12 @@
             closeContactTeacherModal();
         }
 
+        // NEW: Privacy Security Page Function
+        function showPrivacySecurityPage(event) {
+            if (event) event.preventDefault();
+            alert('Pagina Privacy e Sicurezza Dati - In sviluppo');
+        }
+
         function hideAllPages() {
             document.getElementById('homepage').style.display = 'none';
             document.querySelectorAll('.dashboard').forEach(d => d.classList.remove('active'));
@@ -3942,15 +4466,15 @@
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.remove('active');
             });
-            
+
             // Rimuovi active da tutti i tab nav
             document.querySelectorAll('.nav-tab').forEach(tab => {
                 tab.classList.remove('active');
             });
-            
+
             // Mostra il tab selezionato
             document.getElementById('teacher-' + tabName).classList.add('active');
-            
+
             // Attiva il tab nav corrispondente
             event.target.classList.add('active');
         }
@@ -3961,9 +4485,9 @@
             const title = document.getElementById('demoTitle');
             const description = document.getElementById('demoDescription');
             const content = document.getElementById('demoContent');
-            
+
             // Imposta titolo e descrizione in base al tipo di demo
-            switch(demoType) {
+            switch (demoType) {
                 case 'mindmap':
                     title.textContent = '🗺️ Generatore Mappe Concettuali';
                     description.textContent = 'Crea mappe concettuali automaticamente da qualsiasi testo';
@@ -3997,7 +4521,7 @@
                         </div>
                     `;
                     break;
-                    
+
                 case 'summary':
                     title.textContent = '📝 Generatore Riassunti';
                     description.textContent = 'Crea riassunti efficaci automaticamente con AI';
@@ -4023,7 +4547,7 @@
                         </div>
                     `;
                     break;
-                    
+
                 case 'quiz':
                     title.textContent = '🎯 Generatore Quiz';
                     description.textContent = 'Crea quiz personalizzati per testare le conoscenze';
@@ -4064,7 +4588,7 @@
                     `;
                     break;
             }
-            
+
             modal.classList.add('active');
         }
 
@@ -4111,13 +4635,13 @@
             const stopButton = document.getElementById('stopButton');
             const resumeButton = document.getElementById('resumeButton');
             const waveform = document.getElementById('waveform');
-            
+
             isRecording = true;
             recordButton.classList.add('recording');
             stopButton.disabled = false;
             resumeButton.disabled = true;
             waveform.classList.add('active');
-            
+
             // Simula il timer di registrazione
             recordingTime = 0;
             recordingTimer = setInterval(() => {
@@ -4133,14 +4657,14 @@
             const stopButton = document.getElementById('stopButton');
             const resumeButton = document.getElementById('resumeButton');
             const waveform = document.getElementById('waveform');
-            
+
             isRecording = false;
             recordButton.classList.remove('recording');
             recordButton.innerHTML = '🎤';
             stopButton.disabled = false;
             resumeButton.disabled = false;
             waveform.classList.remove('active');
-            
+
             clearInterval(recordingTimer);
         }
 
@@ -4149,14 +4673,14 @@
             const stopButton = document.getElementById('stopButton');
             const resumeButton = document.getElementById('resumeButton');
             const waveform = document.getElementById('waveform');
-            
+
             isRecording = false;
             recordButton.classList.remove('recording');
             recordButton.innerHTML = '🎤';
             stopButton.disabled = true;
             resumeButton.disabled = true;
             waveform.classList.remove('active');
-            
+
             clearInterval(recordingTimer);
             recordingTime = 0;
         }
@@ -4172,10 +4696,10 @@
         function transcribeRecording() {
             const transcriptionArea = document.getElementById('transcriptionArea');
             const transcriptionText = document.getElementById('transcriptionText');
-            
+
             transcriptionArea.classList.add('active');
             transcriptionText.innerHTML = 'Trascrizione in corso... <span class="typing-cursor"></span>';
-            
+
             // Simula il processo di trascrizione
             setTimeout(() => {
                 transcriptionText.innerHTML = `
@@ -4191,46 +4715,81 @@
             alert('Riassunto generato dalla registrazione audio!');
         }
 
-        // Gestione sondaggio
+        // Gestione sondaggio - Validazione Avanzata
         function selectOption(element, value) {
             // Rimuovi selected da tutte le opzioni
             const options = element.parentElement.querySelectorAll('.survey-option');
             options.forEach(option => {
                 option.classList.remove('selected');
             });
-            
+
             // Aggiungi selected all'opzione cliccata
             element.classList.add('selected');
-            
+
             // Salva la risposta
             selectedOptions[`step${currentStep}`] = value;
         }
 
         function nextStep(step) {
-            // Verifica che sia stata selezionata un'opzione per i passi con opzioni
-            if ((step === 1 || step === 2 || step === 4 || step === 5) && !selectedOptions[`step${currentStep}`]) {
-                alert('Per favore, seleziona un\'opzione prima di procedere.');
+            const currentStepElem = document.getElementById(`step${currentStep}`);
+            const requiresTextarea = currentStepElem.hasAttribute('data-requires');
+            const textarea = currentStepElem.querySelector('textarea');
+            const hasRadioOptions = currentStepElem.querySelector('.survey-option');
+
+            let canProceed = false;
+
+            if (requiresTextarea && textarea) {
+                // Per step con textarea, basta che sia compilata
+                canProceed = textarea.value.trim().length > 0;
+            } else if (hasRadioOptions) {
+                // Per step con radio, controlla selezione O textarea se presente
+                const selectedOption = selectedOptions[`step${currentStep}`];
+                const additionalText = textarea ? textarea.value.trim() : '';
+                canProceed = selectedOption || additionalText.length > 0;
+            } else {
+                canProceed = true;
+            }
+
+            if (!canProceed) {
+                showValidationError(currentStepElem, 'Per favore, compila almeno un campo prima di procedere.');
                 return;
             }
-            
-            // Nascondi il passo corrente
-            document.getElementById(`step${currentStep}`).classList.remove('active');
-            
-            // Mostra il nuovo passo
+
+            hideAllSteps();
             document.getElementById(`step${step}`).classList.add('active');
-            
-            // Aggiorna il progresso
             currentStep = step;
             updateProgress();
+        }
+
+        function showValidationError(element, message) {
+            // Rimuovi errori precedenti
+            const existingError = element.querySelector('.validation-error');
+            if (existingError) existingError.remove();
+
+            // Crea nuovo messaggio di errore
+            const errorElem = document.createElement('div');
+            errorElem.className = 'validation-error';
+            errorElem.style.cssText = 'color: var(--danger); margin-top: 1rem; font-size: 0.9rem;';
+            errorElem.textContent = message;
+            errorElem.setAttribute('role', 'alert');
+
+            element.appendChild(errorElem);
+
+            // Focus sul primo campo
+            const firstInput = element.querySelector('input, textarea, select');
+            if (firstInput) {
+                firstInput.focus();
+                firstInput.setAttribute('aria-invalid', 'true');
+            }
         }
 
         function prevStep(step) {
             // Nascondi il passo corrente
             document.getElementById(`step${currentStep}`).classList.remove('active');
-            
+
             // Mostra il passo precedente
             document.getElementById(`step${step}`).classList.add('active');
-            
+
             // Aggiorna il progresso
             currentStep = step;
             updateProgress();
@@ -4239,19 +4798,25 @@
         function updateProgress() {
             const progressBar = document.getElementById('surveyProgress');
             const progressText = document.getElementById('progressText');
-            
+
             const progress = (currentStep / 6) * 100;
             progressBar.style.width = `${progress}%`;
             progressText.textContent = `${currentStep}/6`;
         }
 
+        function hideAllSteps() {
+            document.querySelectorAll('.survey-step').forEach(step => {
+                step.classList.remove('active');
+            });
+        }
+
         function submitSurvey() {
             // Nascondi il modulo del sondaggio
             document.getElementById(`step${currentStep}`).classList.remove('active');
-            
+
             // Mostra i risultati
             document.getElementById('surveyResults').classList.add('active');
-            
+
             // In un'app reale, qui invieremmo i dati al server
             console.log('Risposte del sondaggio:', selectedOptions);
         }
@@ -4259,10 +4824,10 @@
         // Gestione ricerca per docenti
         function openResearch(topic) {
             const resultsContainer = document.getElementById('researchResults');
-            
+
             let content = '';
-            
-            switch(topic) {
+
+            switch (topic) {
                 case 'matematica':
                     content = `
                         <h3>Risorse per Matematica Avanzata</h3>
@@ -4278,7 +4843,7 @@
                         </div>
                     `;
                     break;
-                    
+
                 case 'scienze':
                     content = `
                         <h3>Risorse per Scienze Sperimentali</h3>
@@ -4294,7 +4859,7 @@
                         </div>
                     `;
                     break;
-                    
+
                 case 'metodologie':
                     content = `
                         <h3>Nuove Metodologie Didattiche</h3>
@@ -4311,7 +4876,7 @@
                     `;
                     break;
             }
-            
+
             resultsContainer.innerHTML = content;
         }
 
@@ -4332,7 +4897,7 @@
         // Gestione autenticazione
         function showAuthModal(type) {
             document.getElementById('authModal').classList.add('active');
-            
+
             if (type === 'login') {
                 switchAuthTab('login');
             } else {
@@ -4348,10 +4913,10 @@
             // Gestione tab attivi
             document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
             document.getElementById(tab + 'Tab').classList.add('active');
-            
+
             // Gestione form attivi
             document.querySelectorAll('.form-step').forEach(f => f.style.display = 'none');
-            
+
             if (tab === 'login') {
                 document.getElementById('loginForm').classList.add('active');
             } else {
@@ -4363,15 +4928,15 @@
 
         function selectRole(role) {
             selectedRole = role;
-            
+
             // Rimuovi selected da tutte le card
             document.querySelectorAll('.role-card').forEach(card => {
                 card.classList.remove('selected');
             });
-            
+
             // Aggiungi selected alla card cliccata
             event.target.closest('.role-card').classList.add('selected');
-            
+
             // Mostra il form di registrazione appropriato
             showRegistrationForm(role);
         }
@@ -4381,16 +4946,115 @@
             document.querySelectorAll('#registerForm .form-step').forEach(form => {
                 form.style.display = 'none';
             });
-            
+
             // Mostra il form appropriato
             document.getElementById(role + 'Registration').style.display = 'block';
+        }
+
+        // Validazione Form
+        function initFormValidation() {
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', handleFormSubmit);
+
+                // Validazione real-time
+                const inputs = form.querySelectorAll('input, textarea, select');
+                inputs.forEach(input => {
+                    input.addEventListener('blur', validateField);
+                    input.addEventListener('input', clearFieldError);
+                });
+            });
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+
+            if (validateForm(form)) {
+                // Procedi con l'invio
+                if (form.id === 'loginForm') {
+                    performLogin();
+                } else if (form.id.includes('Registration')) {
+                    const role = form.id.replace('Registration', '');
+                    performRegistration(role);
+                }
+            }
+        }
+
+        function validateForm(form) {
+            let isValid = true;
+            const requiredFields = form.querySelectorAll('[required]');
+
+            requiredFields.forEach(field => {
+                if (!validateField({ target: field })) {
+                    isValid = false;
+                }
+            });
+
+            return isValid;
+        }
+
+        function validateField(e) {
+            const field = e.target;
+            const value = field.value.trim();
+            let isValid = true;
+
+            // Rimuovi stato errore precedente
+            field.setAttribute('aria-invalid', 'false');
+            const errorElem = field.parentNode.querySelector('.field-error');
+            if (errorElem) errorElem.remove();
+
+            // Validazioni specifiche
+            if (field.required && !value) {
+                showFieldError(field, 'Questo campo è obbligatorio');
+                isValid = false;
+            } else if (field.type === 'email' && value) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    showFieldError(field, 'Inserisci un indirizzo email valido');
+                    isValid = false;
+                }
+            } else if (field.type === 'password' && value) {
+                if (value.length < 6) {
+                    showFieldError(field, 'La password deve essere di almeno 6 caratteri');
+                    isValid = false;
+                }
+            } else if (field.id && field.id.includes('ConfirmPassword')) {
+                const passwordField = document.getElementById(field.id.replace('Confirm', ''));
+                if (passwordField && passwordField.value !== value) {
+                    showFieldError(field, 'Le password non coincidono');
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
+        function showFieldError(field, message) {
+            field.setAttribute('aria-invalid', 'true');
+
+            const errorElem = document.createElement('span');
+            errorElem.className = 'field-error';
+            errorElem.style.cssText = 'color: var(--danger); font-size: 0.8rem; display: block; margin-top: 0.5rem;';
+            errorElem.textContent = message;
+            errorElem.setAttribute('role', 'alert');
+
+            field.parentNode.appendChild(errorElem);
+        }
+
+        function clearFieldError(e) {
+            const field = e.target;
+            field.setAttribute('aria-invalid', 'false');
+
+            const errorElem = field.parentNode.querySelector('.field-error');
+            if (errorElem) errorElem.remove();
         }
 
         function performLogin() {
             // In un'app reale, qui gestiremmo il login
             alert('Login effettuato con successo!');
             closeAuthModal();
-            
+
             // Reindirizza alla dashboard appropriata in base al ruolo
             // Per demo, reindirizziamo alla dashboard studente
             showStudentLogin();
@@ -4400,7 +5064,7 @@
             // In a real application, this would send registration data to a server
             alert(`Registrazione ${role} completata con successo!`);
             closeAuthModal();
-            
+
             // Show appropriate dashboard based on role
             if (role === 'teacher') {
                 showTeacherLogin();
@@ -4423,6 +5087,25 @@
             document.getElementById('authorizationPopup').classList.remove('active');
         }
 
+        // Back Universale
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                // Fallback alla home se non c'è history
+                backToHome();
+            }
+        }
+
+        function updateBackButton() {
+            const backButton = document.querySelector('.back-button');
+            if (backButton) {
+                const shouldShow = !document.getElementById('homepage').style.display !== 'none' &&
+                    window.history.length > 1;
+                backButton.style.display = shouldShow ? 'block' : 'none';
+            }
+        }
+
         // Gestione pagine legali (placeholder)
         function showPrivacyPage(event) {
             if (event) event.preventDefault();
@@ -4433,6 +5116,81 @@
             if (event) event.preventDefault();
             alert('Pagina Cookie Policy - Questa è una demo, la pagina reale sarebbe qui.');
         }
+
+        // Normalizza tutti gli href
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('a[href="#"]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // Logica specifica per ogni link
+                    if (link.textContent.includes('Privacy')) {
+                        showPrivacyPage(e);
+                    } else if (link.textContent.includes('Cookie')) {
+                        showCookiePage(e);
+                    } else if (link.textContent.includes('Bullismo')) {
+                        showBullyingPage(e);
+                    } else if (link.textContent.includes('Contatti')) {
+                        showContactPage(e);
+                    }
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Gestione tab
+            const tabs = document.querySelectorAll('.auth-tab');
+            const forms = document.querySelectorAll('.auth-form');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabName = tab.getAttribute('data-tab');
+
+                    // Rimuovi classe active da tutti i tab e form
+                    tabs.forEach(t => t.classList.remove('active'));
+                    forms.forEach(f => f.classList.remove('active'));
+
+                    // Aggiungi classe active al tab e form selezionati
+                    tab.classList.add('active');
+                    document.getElementById(`${tabName}Form`).classList.add('active');
+                });
+            });
+
+            // Gestione selezione profilo
+            const profileOptions = document.querySelectorAll('.profile-option');
+            const schoolFields = document.getElementById('schoolFields');
+
+            profileOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    // Rimuovi selezione da tutti i profili
+                    profileOptions.forEach(o => o.classList.remove('selected'));
+
+                    // Aggiungi selezione al profilo cliccato
+                    option.classList.add('selected');
+
+                    // Mostra/nascondi campi scuola in base al profilo
+                    const profile = option.getAttribute('data-profile');
+                    if (profile === 'studente' || profile === 'docente') {
+                        schoolFields.style.display = 'block';
+                    } else {
+                        schoolFields.style.display = 'none';
+                    }
+                });
+            });
+
+            // Gestione invio form
+            document.getElementById('loginForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                // Qui andrà la logica di login
+                console.log('Login effettuato');
+            });
+
+            document.getElementById('registerForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+                // Qui andrà la logica di registrazione
+                console.log('Registrazione effettuata');
+            });
+        });
     </script>
 </body>
+
 </html>
