@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  standalone: true,
+  imports: [RouterOutlet],
+  template: `<router-outlet></router-outlet>`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
-  title = 'sito-master';
-}
+export class AppComponent {}

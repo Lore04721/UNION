@@ -1,0 +1,52 @@
+<div class="auth-wrapper">
+  <div class="auth-card">
+    <h1 class="auth-title">Registrazione</h1>
+    <p class="auth-subtitle">Crea il tuo account Union</p>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Nome</label>
+        <input class="form-control" type="text" />
+      </div>
+      <div class="form-group">
+        <label>Cognome</label>
+        <input class="form-control" type="text" />
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input class="form-control" type="email" />
+      </div>
+      <div class="form-group">
+        <label>Ruolo</label>
+        <select class="form-control">
+          <option value="">Seleziona…</option>
+          <option value="student">Studente</option>
+          <option value="parent">Genitore</option>
+          <option value="teacher">Docente</option>
+          <option value="user">Utente</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input class="form-control" type="password" />
+      </div>
+      <div class="form-group">
+        <label>Conferma password</label>
+        <input class="form-control" type="password" />
+      </div>
+    </div>
+
+    <div class="checkbox">
+      <input id="terms" type="checkbox" />
+      <label for="terms">
+        Accetto i <a href="#">termini</a> e la <a href="#">privacy</a>
+      </label>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary">Crea account</button>
+      <a class="btn btn-outline" routerLink="/login">Hai già un account? Accedi</a>
+      <a class="btn btn-outline" routerLink="/">Torna alla home</a>
+    </div>
+  </div>
+</div>

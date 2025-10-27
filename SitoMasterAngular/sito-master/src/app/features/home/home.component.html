@@ -1,0 +1,1583 @@
+<!-- Template generato automaticamente -->
+<div class="page">
+
+    <!-- Header -->
+    <header id="header" role="banner">
+        <nav aria-label="Navigazione principale">
+            <div class="logo" role="button" tabindex="0" aria-label="Torna alla home page">UNION
+            </div>
+
+            <button class="hamburger" aria-label="Menu navigazione" aria-expanded="false" aria-controls="nav-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-menu" id="nav-menu" role="navigation" aria-label="Menu principale">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#charts">Dati Dispersione</a></li>
+                    <li><a href="#impact">Il Nostro Impatto</a></li>
+                    <li><a href="#services">Servizi</a></li>
+                    <li><a href="#news">News IA</a></li>
+                    <li><a href="#survey">Sondaggi</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                    
+
+                </ul>
+                <div class="auth-buttons">
+                    <a class="btn btn-outline" routerLink="/login">Login</a>
+                    <a class="btn btn-primary" routerLink="/register">Registrati</a>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <!-- Pulsante indietro universale -->
+    <button class="back-button" aria-label="Torna alla pagina precedente" style="display: none;">
+        ← Indietro
+    </button>
+
+    <!-- Login/Registration Modal -->
+    <div id="authModal" class="auth-modal">
+        <div class="auth-content">
+            <span class="modal-close">&times;</span>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="loginTab">Login</button>
+                <button class="auth-tab" id="registerTab">Registrati</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="loginForm" class="form-step active">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" class="form-control" placeholder="la.tua.email@esempio.com">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-control" placeholder="La tua password">
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">Ricordami</label>
+                </div>
+                <button class="btn btn-primary" style="width: 100%;">Accedi</button>
+                <p style="text-align: center; margin-top: 1rem;">
+                    <a href="#" style="color: var(--primary);">Password dimenticata?</a>
+                </p>
+            </div>
+
+            <!-- Registration Form -->
+            <div id="registerForm" class="form-step">
+                <div class="form-group">
+                    <label>Seleziona il tuo ruolo</label>
+                    <div class="role-selection">
+                        <div class="role-card">
+                            <div class="role-icon">🎓</div>
+                            <h4>Studente</h4>
+                            <p>Accedi ai materiali della tua scuola</p>
+                        </div>
+                        <div class="role-card">
+                            <div class="role-icon">👨‍🏫</div>
+                            <h4>Docente</h4>
+                            <p>Crea contenuti per le tue classi</p>
+                        </div>
+                        <div class="role-card">
+                            <div class="role-icon">👤</div>
+                            <h4>Utente</h4>
+                            <p>Usa gli strumenti per studio personale</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Registration -->
+                <div id="studentRegistration" class="form-step active">
+                    <h3 style="margin-bottom: 1.5rem;">Registrazione Studente</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="studentName">Nome</label>
+                            <input type="text" id="studentName" class="form-control" placeholder="Il tuo nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="studentSurname">Cognome</label>
+                            <input type="text" id="studentSurname" class="form-control" placeholder="Il tuo cognome">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studentEmail">Email</label>
+                        <input type="email" id="studentEmail" class="form-control" placeholder="la.tua.email@esempio.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studentSchool">Scuola/Istituto</label>
+                        <select id="studentSchool" class="form-control">
+                            <option value="">Seleziona la tua scuola</option>
+                            <option value="liceo-scientifico">Liceo Scientifico A. Einstein</option>
+                            <option value="istituto-tecnico">Istituto Tecnico G. Marconi</option>
+                            <option value="liceo-classico">Liceo Classico Dante Alighieri</option>
+                            <option value="istituto-professionale">Istituto Professionale L. Da Vinci</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="studentClass">Classe</label>
+                            <input type="text" id="studentClass" class="form-control" placeholder="Es. 3A">
+                        </div>
+                        <div class="form-group">
+                            <label for="studentSection">Sezione</label>
+                            <input type="text" id="studentSection" class="form-control" placeholder="Es. Scientifico">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studentPassword">Password</label>
+                        <input type="password" id="studentPassword" class="form-control" placeholder="Crea una password sicura">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studentConfirmPassword">Conferma Password</label>
+                        <input type="password" id="studentConfirmPassword" class="form-control" placeholder="Ripeti la password">
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="parentConsent" required>
+                        <label for="parentConsent">Dichiaro di aver ottenuto il consenso dei miei genitori/tutori per l'utilizzo della piattaforma Union</label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="privacyPolicy" required>
+                        <label for="privacyPolicy">Accetto i <a href="#">termini di servizio</a> e la <a href="#">privacy policy</a></label>
+                    </div>
+                    
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Completa Registrazione</button>
+                </div>
+
+                <!-- Teacher Registration -->
+                <div id="teacherRegistration" class="form-step">
+                    <h3 style="margin-bottom: 1.5rem;">Registrazione Docente</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="teacherName">Nome</label>
+                            <input type="text" id="teacherName" class="form-control" placeholder="Il tuo nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="teacherSurname">Cognome</label>
+                            <input type="text" id="teacherSurname" class="form-control" placeholder="Il tuo cognome">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="teacherEmail">Email istituzionale</label>
+                        <input type="email" id="teacherEmail" class="form-control" placeholder="nome.cognome@scuola.edu.it">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="teacherSchool">Scuola/Istituto</label>
+                        <select id="teacherSchool" class="form-control">
+                            <option value="">Seleziona la tua scuola</option>
+                            <option value="liceo-scientifico">Liceo Scientifico A. Einstein</option>
+                            <option value="istituto-tecnico">Istituto Tecnico G. Marconi</option>
+                            <option value="liceo-classico">Liceo Classico Dante Alighieri</option>
+                            <option value="istituto-professionale">Istituto Professionale L. Da Vinci</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="teacherSubjects">Materie insegnate</label>
+                        <select id="teacherSubjects" class="form-control" multiple>
+                            <option value="matematica">Matematica</option>
+                            <option value="italiano">Italiano</option>
+                            <option value="scienze">Scienze</option>
+                            <option value="storia">Storia</option>
+                            <option value="inglese">Inglese</option>
+                            <option value="informatica">Informatica</option>
+                        </select>
+                        <small style="color: var(--gray);">Tieni premuto Ctrl per selezionare più materie</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="teacherPassword">Password</label>
+                        <input type="password" id="teacherPassword" class="form-control" placeholder="Crea una password sicura">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="teacherConfirmPassword">Conferma Password</label>
+                        <input type="password" id="teacherConfirmPassword" class="form-control" placeholder="Ripeti la password">
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="teacherPrivacyPolicy" required>
+                        <label for="teacherPrivacyPolicy">Accetto i <a href="#">termini di servizio</a> e la <a href="#">privacy policy</a></label>
+                    </div>
+                    
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Completa Registrazione</button>
+                </div>
+
+                <!-- Generic User Registration -->
+                <div id="genericRegistration" class="form-step">
+                    <h3 style="margin-bottom: 1.5rem;">Registrazione Utente</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="genericName">Nome</label>
+                            <input type="text" id="genericName" class="form-control" placeholder="Il tuo nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="genericSurname">Cognome</label>
+                            <input type="text" id="genericSurname" class="form-control" placeholder="Il tuo cognome">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="genericEmail">Email</label>
+                        <input type="email" id="genericEmail" class="form-control" placeholder="la.tua.email@esempio.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="genericInterests">Interessi di apprendimento</label>
+                        <select id="genericInterests" class="form-control" multiple>
+                            <option value="tecnologia">Tecnologia</option>
+                            <option value="scienze">Scienze</option>
+                            <option value="arte">Arte e Creatività</option>
+                            <option value="lingue">Lingue Straniere</option>
+                            <option value="business">Business e Economia</option>
+                            <option value="salute">Salute e Benessere</option>
+                        </select>
+                        <small style="color: var(--gray);">Tieni premuto Ctrl per selezionare più interessi</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="genericPassword">Password</label>
+                        <input type="password" id="genericPassword" class="form-control" placeholder="Crea una password sicura">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="genericConfirmPassword">Conferma Password</label>
+                        <input type="password" id="genericConfirmPassword" class="form-control" placeholder="Ripeti la password">
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="genericPrivacyPolicy" required>
+                        <label for="genericPrivacyPolicy">Accetto i <a href="#">termini di servizio</a> e la <a href="#">privacy policy</a></label>
+                    </div>
+                    
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Completa Registrazione</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home Page -->
+    <div id="homepage">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Rivoluziona l'Apprendimento con Union</h1>
+                <p>La piattaforma innovativa che sta trasformando l'educazione in Italia, combattendo la dispersione
+                    scolastica attraverso l'intelligenza artificiale</p>
+
+                <div class="cta-section">
+                    <div class="cta-card" role="button" tabindex="0">
+                        <h3>👨‍🏫 Sei un Docente?</h3>
+                        <p>Accedi alla dashboard per creare lezioni interattive, generare mappe concettuali e molto
+                            altro</p>
+                        <a href="#" class="btn btn-primary">Accedi Docente</a>
+                    </div>
+                    <div class="cta-card" role="button" tabindex="0">
+                        <h3>🎓 Sei uno Studente?</h3>
+                        <p>Accedi ai materiali didattici della tua scuola e utilizza gli strumentos AI per studiare
+                            meglio</p>
+                        <a href="#" class="btn btn-primary">Accedi Studente</a>
+                    </div>
+                    <div class="cta-card" role="button" tabindex="0">
+                        <h3>👪 Sei un Genitore?</h3>
+                        <p>Monitora i progressi dei tuoi figli e rimani aggiornato sul loro rendimento</p>
+                        <a href="#" class="btn btn-primary">Accedi Genitore</a>
+                    </div>
+                    <div class="cta-card" role="button" tabindex="0">
+                        <h3>👤 Nuovo Utente?</h3>
+                        <p>Organizza appunti, registra audio, genera quiz e sfrutta l'AI per l'apprendimento personale
+                        </p>
+                        <a href="#" class="btn btn-primary">Inizia Ora</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partner Section -->
+        <main>
+            <section>
+                <div class="partner-section">
+                    <h3>Partner Tecnologico Ufficiale</h3>
+                    <div class="partner-logo-container">
+                        <a href="https://www.codebase.it" target="_blank" class="partner-logo-link">
+                            <div class="partner-logo-text">Codebase</div>
+                        </a>
+                    </div>
+                    <p style="margin-top: 1.5rem; color: var(--gray);">Collaboriamo con Codebase per lo sviluppo di
+                        soluzioni AI all'avanguardia</p>
+                </div>
+            </section>
+
+            <!-- NEW: AI News Section -->
+            <section class="news-section" id="news">
+                <div class="section-header">
+                    <h2>📰 IA e Apprendimento: Le Ultime Novità</h2>
+                    <p class="subtitle">Scopri come l'intelligenza artificiale sta rivoluzionando il mondo
+                        dell'educazione</p>
+                </div>
+
+                <div class="news-grid">
+                    <div class="news-card">
+                        <div class="news-image">🤖</div>
+                        <div class="news-content">
+                            <div class="news-date">15 Ottobre 2025</div>
+                            <h3 class="news-title">L'IA come Supporto, non Sostituzione</h3>
+                            <p class="news-excerpt">Scopri perché l'intelligenza artificiale dovrebbe essere vista come
+                                uno strumento di supporto per docenti e studenti, non come un sostituto
+                                dell'insegnamento tradizionale.</p>
+                            <a href="#" class="btn btn-outline">Leggi di più</a>
+                        </div>
+                    </div>
+
+                    <div class="news-card">
+                        <div class="news-image">🎯</div>
+                        <div class="news-content">
+                            <div class="news-date">10 Ottobre 2025</div>
+                            <h3 class="news-title">Apprendimento Personalizzato con AI</h3>
+                            <p class="news-excerpt">Come gli algoritmi di machine learning stanno creando percorsi di
+                                apprendimento unici per ogni studente, adattandosi al loro ritmo e stile di
+                                apprendimento.</p>
+                            <a href="#" class="btn btn-outline">Leggi di più</a>
+                        </div>
+                    </div>
+
+                    <div class="news-card">
+                        <div class="news-image">📊</div>
+                        <div class="news-content">
+                            <div class="news-date">5 Ottobre 2025</div>
+                            <h3 class="news-title">Analisi Predittiva nella Scuola</h3>
+                            <p class="news-excerpt">L'uso dell'IA per identificare precocemente gli studenti a rischio
+                                di abbandono scolastico e intervenire tempestivamente con supporto personalizzato.</p>
+                            <a href="#" class="btn btn-outline">Leggi di più</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3D Charts Dispersione -->
+            <section class="charts-3d-section" id="charts">
+                <div class="charts-3d-content">
+                    <div class="charts-3d-header">
+                        <h2>📊 Dispersione Scolastica in Italia: Dati in 3D</h2>
+                        <p>Grafici interattivi che mostrano la rivoluzione in corso nell'educazione italiana</p>
+                    </div>
+
+                    <div class="charts-grid">
+                        <!-- Bar Chart 3D -->
+                        <div class="chart-3d-container">
+                            <div class="chart-title">Evoluzione Dispersione Scolastica (2021-2025)</div>
+                            <div class="bar-chart-3d">
+                                <div class="bar-3d">
+                                    <div class="bar-front" style="--bar-height: 254px;">
+                                        <div class="bar-top"></div>
+                                        <div class="bar-side"></div>
+                                    </div>
+                                    <div class="bar-value">12.7%</div>
+                                    <div class="bar-label">2021</div>
+                                </div>
+                                <div class="bar-3d">
+                                    <div class="bar-front" style="--bar-height: 227px;">
+                                        <div class="bar-top"></div>
+                                        <div class="bar-side"></div>
+                                    </div>
+                                    <div class="bar-value">11.5%</div>
+                                    <div class="bar-label">2022</div>
+                                </div>
+                                <div class="bar-3d">
+                                    <div class="bar-front" style="--bar-height: 207px;">
+                                        <div class="bar-top"></div>
+                                        <div class="bar-side"></div>
+                                    </div>
+                                    <div class="bar-value">10.5%</div>
+                                    <div class="bar-label">2023</div>
+                                </div>
+                                <div class="bar-3d">
+                                    <div class="bar-front" style="--bar-height: 200px;">
+                                        <div class="bar-top"></div>
+                                        <div class="bar-side"></div>
+                                    </div>
+                                    <div class="bar-value">10.1%</div>
+                                    <div class="bar-label">2024</div>
+                                </div>
+                                <div class="bar-3d">
+                                    <div class="bar-front" style="--bar-height: 196px;">
+                                        <div class="bar-top"></div>
+                                        <div class="bar-side"></div>
+                                    </div>
+                                    <div class="bar-value">9.8%</div>
+                                    <div class="bar-label">2025</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pie Chart 3D -->
+                        <div class="chart-3d-container">
+                            <div class="chart-title">Distribuzione per Grado Scolastico (2025)</div>
+                            <div class="pie-chart-3d">
+                                <div class="pie-slice-inner"></div>
+                            </div>
+                            <div style="margin-top: 2rem; color: white; text-align: center;">
+                                <div style="margin: 0.5rem 0;"><span style="color: var(--accent);">●</span> Medie (36%)
+                                </div>
+                                <div style="margin: 0.5rem 0;"><span style="color: var(--primary);">●</span> Superiori
+                                    (28%)</div>
+                                <div style="margin: 0.5rem 0;"><span style="color: var(--danger);">●</span> Primarie
+                                    (17%)</div>
+                                <div style="margin: 0.5rem 0;"><span style="color: var(--warning);">●</span> Università
+                                    (19%)</div>
+                            </div>
+                        </div>
+
+                        <!-- Line Chart 3D -->
+                        <div class="chart-3d-container">
+                            <div class="chart-title">Studenti Salvati dall'Abbandono (migliaia)</div>
+                            <div class="line-chart-3d">
+                                <svg class="line-3d" viewBox="0 0 400 300" preserveAspectRatio="none">
+                                    <path class="line-path" d="M 0 280 L 100 240 L 200 180 L 300 100 L 400 40" />
+                                </svg>
+                                <div class="data-point" style="left: 0%; bottom: 7%;"></div>
+                                <div class="data-point" style="left: 25%; bottom: 20%;"></div>
+                                <div class="data-point" style="left: 50%; bottom: 40%;"></div>
+                                <div class="data-point" style="left: 75%; bottom: 67%;"></div>
+                                <div class="data-point" style="left: 100%; bottom: 87%;"></div>
+                            </div>
+                            <div
+                                style="display: flex; justify-content: space-between; color: white; margin-top: 1rem; font-size: 0.9rem;">
+                                <span>2021</span>
+                                <span>2022</span>
+                                <span>2023</span>
+                                <span>2024</span>
+                                <span>2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Story Section -->
+            <section id="impact">
+                <div class="story-section">
+                    <div class="story-content">
+                        <div class="story-header">
+                            <h2>Come Union Sta Rivoluzionando l'Educazione</h2>
+                            <p>La nostra missione contro la dispersione scolastica sta dando risultati straordinari</p>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number">9.8%</div>
+                                <div class="stat-label">Dispersione 2025<br>(dal 12.7% del 2021)</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">-23%</div>
+                                <div class="stat-label">Riduzione abbandono<br>in 4 anni</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">85%</div>
+                                <div class="stat-label">Studenti più coinvolti<br>con Union</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">2.5M</div>
+                                <div class="stat-label">Studenti raggiunti<br>in Italia</div>
+                            </div>
+                        </div>
+
+                        <div class="story-text">
+                            <p><strong class="highlight">La storia di Marco:</strong> Marco frequentava il terzo anno
+                                quando ha iniziato ad accumulare lacune. La frustrazione cresceva, e stava considerando
+                                l'abbandono.</p>
+
+                            <p>Poi la sua scuola ha adottato <strong class="highlight">Union</strong>. Attraverso la
+                                nostra piattaforma, Marco ha potuto accedere a <strong class="highlight">lezioni
+                                    personalizzate</strong> che si adattavano al suo ritmo. I <strong
+                                    class="highlight">riassunti AI</strong> lo hanno aiutato a recuperare, mentre le
+                                <strong class="highlight">mappe concettuali interattive</strong> hanno reso tutto
+                                comprensibile.</p>
+
+                            <p>Oggi Marco è al quinto anno con media dell'8 e vuole iscriversi a ingegneria. La sua è
+                                una delle <strong class="highlight">migliaia di storie di successo</strong> che Union
+                                scrive ogni giorno.</p>
+
+                            <p><strong class="highlight">Il nostro impegno:</strong> Union non è solo tecnologia, è un
+                                <strong class="highlight">ponte tra studenti e futuro</strong>. Combiniamo AI, pedagogia
+                                avanzata e collaborazione per garantire che nessuno rimanga indietro.</p>
+
+                            <p><strong class="highlight">Risultati concreti:</strong> L'Italia ha superato con un anno
+                                di anticipo l'obiettivo PNRR del 10.2%, raggiungendo il 9.8% nel 2025. Union opera in
+                                oltre 247 scuole nazionali.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section id="services">
+                <div class="section-header">
+                    <h2>I Nostri Servizi</h2>
+                    <p class="subtitle">Una suite completa di strumenti per tutti</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🗺️</div>
+                        <h3>Mappe Concettuali AI</h3>
+                        <p>Genera automaticamente mappe interattive da qualsiasi argomento per visualizzare connessioni.
+                        </p>
+                        <ul class="service-features">
+                            <li>Generazione automatica</li>
+                            <li>Personalizzazione completa</li>
+                            <li>Esportazione multi-formato</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📝</div>
+                        <h3>Riassunti Intelligenti</h3>
+                        <p>Crea riassunti efficaci con l'AI, adattati al livello di comprensione.</p>
+                        <ul class="service-features">
+                            <li>Sintesi avanzata con AI</li>
+                            <li>Livelli adattabili</li>
+                            <li>Concetti chiave evidenziati</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎯</div>
+                        <h3>Quiz Interattivi</h3>
+                        <p>Genera quiz personalizzati per testare competenze su qualsiasi argomento.</p>
+                        <ul class="service-features">
+                            <li>Generazione automatica</li>
+                            <li>Correzione istantanea</li>
+                            <li>Difficoltà adattiva</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎤</div>
+                        <h3>Registrazione Audio</h3>
+                        <p>Registra lezioni e appunti vocali con trascrizione automatica tramite AI.</p>
+                        <ul class="service-features">
+                            <li>Trascrizione in tempo reale</li>
+                            <li>Riconoscimento vocale avanzato</li>
+                            <li>Organizzazione automatica</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📊</div>
+                        <h3>Analytics & Reporting</h3>
+                        <p>Monitora progressi e identifica difficoltà per intervenire tempestivamente.</p>
+                        <ul class="service-features">
+                            <li>Monitoraggio real-time</li>
+                            <li>Previsione difficoltà</li>
+                            <li>Report personalizzati</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">💬</div>
+                        <h3>Tutor AI 24/7</h3>
+                        <p>Assistente virtuale sempre disponibile per rispondere a domande e chiarire dubbi.</p>
+                        <ul class="service-features">
+                            <li>Disponibilità continua</li>
+                            <li>Risposte contestualizzate</li>
+                            <li>Supporto multilingue</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Privacy e Sicurezza Dati -->
+            <section>
+                <div class="privacy-section">
+                    <div class="section-header">
+                        <h2>Privacy e Sicurezza dei Dati</h2>
+                        <p class="subtitle">La tua privacy è la nostra priorità assoluta</p>
+                    </div>
+                    <div class="privacy-grid">
+                        <div class="privacy-card">
+                            <h4>🔒 Crittografia End-to-End</h4>
+                            <p>Tutti i dati sono crittografati con standard militari AES-256. Nessuno, nemmeno noi, può
+                                accedere ai tuoi contenuti privati.</p>
+                        </div>
+                        <div class="privacy-card">
+                            <h4>🇪🇺 GDPR Compliant</h4>
+                            <p>Rispettiamo completamente il Regolamento Europeo sulla Protezione dei Dati. I tuoi dati
+                                rimangono in server UE.</p>
+                        </div>
+                        <div class="privacy-card">
+                            <h4>🛡️ Certificazioni ISO</h4>
+                            <p>Certificati ISO 27001 per la gestione della sicurezza delle informazioni e ISO 27018 per
+                                la privacy nel cloud.</p>
+                        </div>
+                        <div class="privacy-card">
+                            <h4>👤 Controllo Totale</h4>
+                            <p>Hai il controllo completo sui tuoi dati: visualizza, esporta o elimina qualsiasi
+                                informazione in qualsiasi momento.</p>
+                        </div>
+                        <div class="privacy-card">
+                            <h4>🚫 Zero Vendita Dati</h4>
+                            <p>Non vendiamo mai i tuoi dati a terze parti. Il nostro modello di business si basa solo
+                                sugli abbonamenti.</p>
+                        </div>
+                        <div class="privacy-card">
+                            <h4>🔐 Autenticazione Sicura</h4>
+                            <p>Autenticazione a due fattori, Single Sign-On e gestione avanzata delle sessioni per
+                                massima sicurezza.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Enhanced Survey Section -->
+            <section class="survey-section" id="survey">
+                <div class="survey-container">
+                    <div class="section-header">
+                        <h2>📊 Sondaggio Soddisfazione</h2>
+                        <p class="subtitle">La tua opinione conta! Aiutaci a migliorare l'esperienza educativa</p>
+                    </div>
+
+                    <div class="survey-progress-container">
+                        <div class="survey-progress-text">
+                            <span>Progresso</span>
+                            <span id="progressText">1/6</span>
+                        </div>
+                        <div class="survey-progress">
+                            <div class="survey-progress-bar" id="surveyProgress"></div>
+                        </div>
+                    </div>
+
+                    <div class="survey-step active" id="step1">
+                        <div class="survey-question">Qual è il tuo ruolo?</div>
+                        <div class="survey-options">
+                            <div class="survey-option">
+                                <div class="survey-option-icon">🎓</div>
+                                <div>Studente</div>
+                            </div>
+                            <div class="survey-option">
+                                <div class="survey-option-icon">👨‍🏫</div>
+                                <div>Docente</div>
+                            </div>
+                            <div class="survey-option">
+                                <div class="survey-option-icon">👪</div>
+                                <div>Genitore</div>
+                            </div>
+                            <div class="survey-option">
+                                <div class="survey-option-icon">👤</div>
+                                <div>Altro</div>
+                            </div>
+                        </div>
+                        <div class="survey-navigation">
+                            <button class="btn btn-outline" disabled>Indietro</button>
+                            <button class="btn btn-primary">Avanti</button>
+                        </div>
+                    </div>
+
+                    <div class="survey-step" id="step2">
+                        <div class="survey-question">Quanto sei soddisfatto del tuo attuale ambiente di apprendimento?
+                        </div>
+                        <div class="survey-options">
+                            <div class="survey-option">
+                                <div class="survey-option-icon">😞</div>
+                                <div>Per niente soddisfatto</div>
+                            </div>
+                            <div class="survey-option">
+                                <div class="survey-option-icon">😐</div>
+                                <div>Poco soddisfatto</div>
+                            </div>
+                            <div class="survey-option">
+                                <div class="survey-option-icon">😊</div>
+                                <div>Abbastanza soddisfatto</div>
+                            </div>
+                            <div class="survey-option">
+                                <div class="survey-option-icon">😄</div>
+                                <div>Molto soddisfatto</div>
+                            </div>
+                            <div class="survey-option">
+                                <div class="survey-option-icon">🤩</div>
+                                <div>Estremamente soddisfatto</div>
+                            </div>
+                        </div>
+                        <div class="survey-navigation">
+                            <button class="btn btn-outline">Indietro</button>
+                            <button class="btn btn-primary">Avanti</button>
+                        </div>
+                    </div>
+
+                    <div class="survey-step" id="step3" data-requires="textarea">
+                        <div class="survey-question">Cosa miglioreresti del tuo attuale metodo di apprendimento?</div>
+                        <textarea class="survey-textarea" placeholder="Scrivi qui i tuoi suggerimenti..."
+                            aria-describedby="step3-help"></textarea>
+                        <small id="step3-help" class="help-text">Questo campo è opzionale ma apprezzato</small>
+                        <div class="survey-navigation">
+                            <button class="btn btn-outline">Indietro</button>
+                            <button class="btn btn-primary">Avanti</button>
+                        </div>
+                    </div>
+
+                    <div class="survey-step" id="step4">
+                        <div class="survey-question">Union ha migliorato il tuo apprendimento?</div>
+                        <div class="survey-options">
+                            <div class="survey-option">
+                                <div class="survey-option-icon">✅</div>
+                                <div>Sì, notevolmente</div>
+                            </div>
+                            <div class="survey-option">
+                                <div class="survey-option-icon">🔄</div>
+                                <div>Parzialmente</div>
+                            </div>
+                            <div class="survey-option">
+                                <div class="survey-option-icon">❌</div>
+                                <div>Non ancora</div>
+                            </div>
+                            <div class="survey-option">
+                                <div class="survey-option-icon">❓</div>
+                                <div>Non so ancora</div>
+                            </div>
+                        </div>
+                        <div class="survey-navigation">
+                            <button class="btn btn-outline">Indietro</button>
+                            <button class="btn btn-primary">Avanti</button>
+                        </div>
+                    </div>
+
+                    <div class="survey-step" id="step5">
+                        <div class="survey-question">Quale funzionalità di Union trovi più utile?</div>
+                        <div class="survey-options">
+                            <div class="survey-option">
+                                <div class="survey-option-icon">🗺️</div>
+                                <div>Mappe Concettuali AI</div>
+                            </div>
+                            <div class="survey-option">
+                                <div class="survey-option-icon">📝</div>
+                                <div>Riassunti Intelligenti</div>
+                            </div>
+                            <div class="survey-option">
+                                <div class="survey-option-icon">🎯</div>
+                                <div>Quiz Interattivi</div>
+                            </div>
+                            <div class="survey-option">
+                                <div class="survey-option-icon">🎤</div>
+                                <div>Registrazione Audio</div>
+                            </div>
+                            <div class="survey-option">
+                                <div class="survey-option-icon">💬</div>
+                                <div>Tutor AI 24/7</div>
+                            </div>
+                        </div>
+                        <div class="survey-navigation">
+                            <button class="btn btn-outline">Indietro</button>
+                            <button class="btn btn-primary">Avanti</button>
+                        </div>
+                    </div>
+
+                    <div class="survey-step" id="step6" data-requires="textarea">
+                        <div class="survey-question">Altri commenti o suggerimenti?</div>
+                        <textarea class="survey-textarea" placeholder="Condividi altre idee per migliorare Union..."
+                            aria-describedby="step6-help"></textarea>
+                        <small id="step6-help" class="help-text">Questo campo è opzionale ma apprezzato</small>
+                        <div class="survey-navigation">
+                            <button class="btn btn-outline">Indietro</button>
+                            <button class="btn btn-primary">Invia Sondaggio</button>
+                        </div>
+                    </div>
+
+                    <div class="survey-results" id="surveyResults">
+                        <div class="section-header">
+                            <h2>🎉 Grazie per il tuo feedback!</h2>
+                            <p class="subtitle">Ecco i risultati aggregati del sondaggio</p>
+                        </div>
+
+                        <div class="result-chart">
+                            <h3>📈 Soddisfazione Generale</h3>
+                            <div class="bar-chart-3d">
+                                <div class="bar-3d">
+                                    <div class="bar-front" style="--bar-height: 120px;">
+                                        <div class="bar-top"></div>
+                                        <div class="bar-side"></div>
+                                    </div>
+                                    <div class="bar-value">24%</div>
+                                    <div class="bar-label">😄 Molto</div>
+                                </div>
+                                <div class="bar-3d">
+                                    <div class="bar-front" style="--bar-height: 180px;">
+                                        <div class="bar-top"></div>
+                                        <div class="bar-side"></div>
+                                    </div>
+                                    <div class="bar-value">36%</div>
+                                    <div class="bar-label">😊 Abbastanza</div>
+                                </div>
+                                <div class="bar-3d">
+                                    <div class="bar-front" style="--bar-height: 100px;">
+                                        <div class="bar-top"></div>
+                                        <div class="bar-side"></div>
+                                    </div>
+                                    <div class="bar-value">20%</div>
+                                    <div class="bar-label">😐 Poco</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="result-stats">
+                            <div class="result-stat">
+                                <div class="result-stat-number">85%</div>
+                                <div class="result-stat-label">Utenti soddisfatti di Union</div>
+                            </div>
+                            <div class="result-stat">
+                                <div class="result-stat-number">67%</div>
+                                <div class="result-stat-label">Miglioramento apprendimento</div>
+                            </div>
+                            <div class="result-stat">
+                                <div class="result-stat-number">42%</div>
+                                <div class="result-stat-label">Riduzione difficoltà</div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary">Torna alla Home</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer id="contact">
+            <div class="footer-content">
+                <div class="footer-grid">
+                    <div class="footer-section">
+                        <h3>UNION</h3>
+                        <p>La piattaforma che rivoluziona l'educazione in Italia, combattendo la dispersione scolastica
+                            attraverso innovazione e AI.</p>
+                        <a href="#" class="contact-button">📧 Contattaci per
+                            Supporto</a>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Servizi</h3>
+                        <ul>
+                            <li><a href="#">Mappe Concettuali</a></li>
+                            <li><a href="#">Riassunti AI</a></li>
+                            <li><a href="#">Quiz Interattivi</a></li>
+                            <li><a href="#">Registrazione Audio</a></li>
+                            <li><a href="#">Tutor AI</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Azienda</h3>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                            <li><a href="#">Termini di Servizio</a></li>
+                            <li><a href="#">Chi Siamo</a></li>
+                            <li><a href="#">Area Bullismo</a></li>
+                            <li><a href="#privacy-security">Privacy e Sicurezza
+                                    Dati</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Supporto</h3>
+                        <ul>
+                            <li><a href="#">Assistenza Tecnica</a></li>
+                            <li><a href="#">Centro Assistenza</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Documentazione</a></li>
+                            <li><a href="mailto:support@union.it">support@union.it</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Union - Tutti i diritti riservati | P.IVA 12345678901</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Teacher Dashboard -->
+    <div id="teacher-dashboard" class="dashboard">
+        <div class="dashboard-header">
+            <div class="dashboard-header-content">
+                <h1>👨‍🏫 Dashboard Docente</h1>
+                <p>Benvenuto Prof. Rossi! Gestisci le tue classi e crea contenuti straordinari</p>
+            </div>
+        </div>
+        <div class="dashboard-content">
+            <div class="dashboard-nav">
+                <div class="nav-tab active">Materiali Didattici</div>
+                <div class="nav-tab">Le Mie Classi</div>
+                <div class="nav-tab">Analytics</div>
+                <div class="nav-tab">Approfondimenti</div>
+            </div>
+
+            <!-- Materials Tab -->
+            <div id="teacher-materials" class="tab-content active">
+                <div class="class-selector">
+                    <h3>Seleziona Classe e Materia</h3>
+                    <div class="class-grid">
+                        <div class="class-card active" role="button"
+                            tabindex="0">
+                            <div class="material-icon">📐</div>
+                            <h4>3A - Matematica</h4>
+                            <p>24 studenti</p>
+                        </div>
+                        <div class="class-card" role="button" tabindex="0">
+                            <div class="material-icon">🔬</div>
+                            <h4>3A - Scienze</h4>
+                            <p>24 studenti</p>
+                        </div>
+                        <div class="class-card" role="button" tabindex="0">
+                            <div class="material-icon">📐</div>
+                            <h4>4B - Matematica</h4>
+                            <p>22 studenti</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-cards">
+                    <div class="action-card" role="button" tabindex="0">
+                        <div class="action-card-icon">🎤</div>
+                        <h3>Registra Lezione</h3>
+                        <p>Registra e trascrivi automaticamente con controlli avanzati</p>
+                    </div>
+                    <div class="action-card" role="button" tabindex="0">
+                        <div class="action-card-icon">🗺️</div>
+                        <h3>Genera Mappa Concettuale</h3>
+                        <p>Crea mappe automaticamente da testi</p>
+                    </div>
+                    <div class="action-card" role="button" tabindex="0">
+                        <div class="action-card-icon">📝</div>
+                        <h3>Crea Riassunto</h3>
+                        <p>Genera riassunti efficaci con AI</p>
+                    </div>
+                    <div class="action-card" role="button" tabindex="0">
+                        <div class="action-card-icon">🎯</div>
+                        <h3>Quiz Interattivi</h3>
+                        <p>Crea verifiche personalizzate</p>
+                    </div>
+                    <div class="action-card" role="button" tabindex="0">
+                        <div class="action-card-icon">📊</div>
+                        <h3>Analytics Classe</h3>
+                        <p>Monitora progressi degli studenti</p>
+                    </div>
+                    <div class="action-card" role="button" tabindex="0">
+                        <div class="action-card-icon">🔍</div>
+                        <h3>Approfondimenti AI</h3>
+                        <p>Genera contenuti di approfondimento</p>
+                    </div>
+                </div>
+
+                <div class="shared-content">
+                    <h3>Contenuti Condivisi Recentemente</h3>
+                    <div class="content-list">
+                        <div class="content-item">
+                            <div class="content-icon">🎤</div>
+                            <div class="content-info">
+                                <div class="content-title">Lezione: Equazioni di Secondo Grado</div>
+                                <div class="content-meta">Matematica - 3A | 2 giorni fa | 45 minuti</div>
+                            </div>
+                            <div class="content-actions">
+                                <button class="action-btn download">Scarica</button>
+                                <button class="action-btn share">Condividi</button>
+                            </div>
+                        </div>
+                        <div class="content-item">
+                            <div class="content-icon">🗺️</div>
+                            <div class="content-info">
+                                <div class="content-title">Mappa: Teorema di Pitagora</div>
+                                <div class="content-meta">Matematica - 3A | 5 giorni fa</div>
+                            </div>
+                            <div class="content-actions">
+                                <button class="action-btn download">Scarica</button>
+                                <button class="action-btn share">Condividi</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Classes Tab -->
+            <div id="teacher-classes" class="tab-content">
+                <h2>Le Mie Classi</h2>
+                <div class="class-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+                    <div class="class-card active" role="button" tabindex="0">
+                        <div class="material-icon">📐</div>
+                        <h4>3A - Matematica</h4>
+                        <p>24 studenti</p>
+                        <div class="progress-bar" style="margin: 1rem 0;">
+                            <div class="progress-fill" style="width: 75%;"></div>
+                        </div>
+                        <p>75% completamento programma</p>
+                    </div>
+                    <div class="class-card" role="button" tabindex="0">
+                        <div class="material-icon">🔬</div>
+                        <h4>3A - Scienze</h4>
+                        <p>24 studenti</p>
+                        <div class="progress-bar" style="margin: 1rem 0;">
+                            <div class="progress-fill" style="width: 60%;"></div>
+                        </div>
+                        <p>60% completamento programma</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Tab -->
+            <div id="teacher-analytics" class="tab-content">
+                <h2>Analytics di Classe</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">87%</div>
+                        <div class="stat-label">Partecipazione media</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">7.8/10</div>
+                        <div class="stat-label">Voto medio verifiche</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">92%</div>
+                        <div class="stat-label">Completamento compiti</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Studenti a rischio</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research Tab -->
+            <div id="teacher-research" class="tab-content">
+                <h2>Approfondimenti AI</h2>
+                <div class="action-cards">
+                    <div class="action-card" role="button" tabindex="0">
+                        <div class="action-card-icon">📐</div>
+                        <h3>Matematica Avanzata</h3>
+                        <p>Approfondisci concetti matematici complessi</p>
+                    </div>
+                    <div class="action-card" role="button" tabindex="0">
+                        <div class="action-card-icon">🔬</div>
+                        <h3>Scienze Sperimentali</h3>
+                        <p>Risorse per laboratori e esperimenti</p>
+                    </div>
+                    <div class="action-card" role="button" tabindex="0">
+                        <div class="action-card-icon">💡</div>
+                        <h3>Metodologie Didattiche</h3>
+                        <p>Nuove strategie di insegnamento</p>
+                    </div>
+                </div>
+
+                <div class="research-results" id="researchResults">
+                    <!-- I risultati della ricerca verranno inseriti qui dinamicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student Dashboard -->
+    <div id="student-dashboard" class="dashboard">
+        <div class="dashboard-header">
+            <div class="dashboard-header-content">
+                <h1>🎓 Dashboard Studente</h1>
+                <p>Benvenuto Marco! Continua il tuo percorso di apprendimento</p>
+            </div>
+        </div>
+        <div class="dashboard-content">
+            <div class="student-sections">
+                <div class="sidebar">
+                    <h3>Le Tue Materie</h3>
+                    <ul class="subject-list">
+                        <li class="subject-item active" role="button"
+                            tabindex="0">Matematica</li>
+                        <li class="subject-item" role="button" tabindex="0">
+                            Italiano</li>
+                        <li class="subject-item" role="button" tabindex="0">
+                            Scienze</li>
+                        <li class="subject-item" role="button" tabindex="0">
+                            Inglese</li>
+                        <li class="subject-item" role="button" tabindex="0">
+                            Storia</li>
+                    </ul>
+                </div>
+
+                <div class="content-area">
+                    <div id="student-materials" class="tab-content active">
+                        <h2>Materiali di Matematica</h2>
+                        <p>Ultimo accesso: oggi alle 14:30</p>
+
+                        <div class="action-cards">
+                            <div class="action-card" role="button"
+                                tabindex="0">
+                                <div class="action-card-icon">🎤</div>
+                                <h3>Registra Appunti</h3>
+                                <p>Registra e trascrivi con controlli avanzati</p>
+                            </div>
+                            <div class="action-card" role="button" tabindex="0">
+                                <div class="action-card-icon">🗺️</div>
+                                <h3>Genera Mappa</h3>
+                                <p>Crea mappe concettuali automaticamente</p>
+                            </div>
+                            <div class="action-card" role="button" tabindex="0">
+                                <div class="action-card-icon">📝</div>
+                                <h3>Crea Riassunto</h3>
+                                <p>Genera riassunti efficaci con AI</p>
+                            </div>
+                            <div class="action-card" role="button" tabindex="0">
+                                <div class="action-card-icon">🎯</div>
+                                <h3>Quiz di Verifica</h3>
+                                <p>Testa le tue conoscenze</p>
+                            </div>
+                            <div class="action-card" role="button" tabindex="0">
+                                <div class="action-card-icon">🚫</div>
+                                <h3>Area Bullismo</h3>
+                                <p>Segnala episodi di bullismo</p>
+                            </div>
+                        </div>
+
+                        <div class="material-grid">
+                            <div class="material-card" role="button" tabindex="0">
+                                <div class="material-icon">📐</div>
+                                <h4>Equazioni di Secondo Grado</h4>
+                                <p>Lezione del 10/10/2025</p>
+                            </div>
+                            <div class="material-card" role="button" tabindex="0">
+                                <div class="material-icon">📐</div>
+                                <h4>Teorema di Pitagora</h4>
+                                <p>Lezione del 05/10/2025</p>
+                            </div>
+                            <div class="material-card" role="button" tabindex="0">
+                                <div class="material-icon">📐</div>
+                                <h4>Geometria Analitica</h4>
+                                <p>Lezione del 01/10/2025</p>
+                            </div>
+                        </div>
+
+                        <!-- NEW: Teacher Contact Button -->
+                        <div style="margin-top: 2rem; text-align: center;">
+                            <button class="btn btn-primary">📧 Dubbi su qualche
+                                argomento? Scrivi al prof</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: Parent Dashboard -->
+    <div id="parent-dashboard" class="dashboard">
+        <div class="dashboard-header">
+            <div class="dashboard-header-content">
+                <h1>👪 Dashboard Genitore</h1>
+                <p>Benvenuto! Monitora i progressi dei tuoi figli</p>
+            </div>
+        </div>
+        <div class="dashboard-content">
+            <div class="student-sections">
+                <div class="sidebar">
+                    <h3>I Tuoi Figli</h3>
+                    <ul class="subject-list" id="children-list">
+                        <li class="subject-item active" role="button"
+                            tabindex="0">Marco Rossi - 3A</li>
+                        <li class="subject-item" role="button"
+                            tabindex="0">Lucia Bianchi - 2B</li>
+                    </ul>
+                </div>
+
+                <div class="content-area">
+                    <div id="parent-materials" class="tab-content active">
+                        <h2 id="child-name">Marco Rossi - 3A</h2>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number">85%</div>
+                                <div class="stat-label">Media Generale</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">92%</div>
+                                <div class="stat-label">Partecipazione</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">78%</div>
+                                <div class="stat-label">Completamento Compiti</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number">3</div>
+                                <div class="stat-label">Materie in difficoltà</div>
+                            </div>
+                        </div>
+
+                        <h3 style="margin-top: 2rem;">Andamento per Materie</h3>
+                        <div class="progress-list">
+                            <div class="progress-item">
+                                <div class="progress-label">Matematica</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 80%"></div>
+                                </div>
+                                <div class="progress-value">80%</div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-label">Italiano</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%"></div>
+                                </div>
+                                <div class="progress-value">75%</div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-label">Scienze</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 90%"></div>
+                                </div>
+                                <div class="progress-value">90%</div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-label">Inglese</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%"></div>
+                                </div>
+                                <div class="progress-value">85%</div>
+                            </div>
+                        </div>
+
+                        <!-- NEW: Teacher Contact Button -->
+                        <div style="margin-top: 2rem; text-align: center;">
+                            <button class="btn btn-primary">📧 Dubbi su qualche
+                                argomento? Scrivi al prof</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Generic User Dashboard -->
+    <div id="generic-dashboard" class="dashboard">
+        <div class="dashboard-header">
+            <div class="dashboard-header-content">
+                <h1>👤 Dashboard Utente</h1>
+                <p>Benvenuto! Organizza il tuo apprendimento personale</p>
+            </div>
+        </div>
+        <div class="dashboard-content">
+            <div class="folders-section">
+                <h2>Le Tue Cartelle</h2>
+                <div class="folder-grid">
+                    <div class="folder-card" role="button" tabindex="0">
+                        <div class="folder-icon">💻</div>
+                        <div class="folder-name">Tecnologia</div>
+                        <div class="folder-count">15 file</div>
+                    </div>
+                    <div class="folder-card" role="button" tabindex="0">
+                        <div class="folder-icon">🌐</div>
+                        <div class="folder-name">Lingue</div>
+                        <div class="folder-count">8 file</div>
+                    </div>
+                    <div class="folder-card" role="button" tabindex="0">
+                        <div class="folder-icon">💼</div>
+                        <div class="folder-name">Business</div>
+                        <div class="folder-count">12 file</div>
+                    </div>
+                    <div class="folder-card add-folder" role="button" tabindex="0">
+                        <div class="folder-icon">+</div>
+                        <div class="folder-name">Nuova Cartella</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-cards">
+                <div class="action-card" role="button" tabindex="0">
+                    <div class="action-card-icon">🎤</div>
+                    <h3>Registra Audio</h3>
+                    <p>Registra e trascrivi con controlli avanzati</p>
+                </div>
+                <div class="action-card" role="button" tabindex="0">
+                    <div class="action-card-icon">🗺️</div>
+                    <h3>Genera Mappa</h3>
+                    <p>Crea mappe concettuali automaticamente</p>
+                </div>
+                <div class="action-card" role="button" tabindex="0">
+                    <div class="action-card-icon">📝</div>
+                    <h3>Crea Riassunto</h3>
+                    <p>Genera riassunti efficaci con AI</p>
+                </div>
+                <div class="action-card" role="button" tabindex="0">
+                    <div class="action-card-icon">🎯</div>
+                    <h3>Quiz di Verifica</h3>
+                    <p>Testa le tue conoscenze</p>
+                </div>
+                <div class="action-card" role="button" tabindex="0">
+                    <div class="action-card-icon">🚫</div>
+                    <h3>Area Bullismo</h3>
+                    <p>Segnala episodi di bullismo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: Bullying Report Page -->
+    <div id="bullying-page" class="dashboard">
+        <div class="dashboard-header">
+            <div class="dashboard-header-content">
+                <h1>🚫 Area Bullismo</h1>
+                <p>Segnala episodi di bullismo in modo sicuro e anonimo</p>
+            </div>
+        </div>
+        <div class="dashboard-content">
+            <div class="content-area">
+                <div class="section-header">
+                    <h2>Importante: Denunciare è Giusto</h2>
+                    <p class="subtitle">Il bullismo è un problema serio. Segnalando, aiuti te stesso e gli altri.</p>
+                </div>
+
+                <div class="story-text">
+                    <p>Il bullismo può manifestarsi in molte forme: fisiche, verbali, psicologiche e online
+                        (cyberbullismo). È importante riconoscerlo e denunciarlo.</p>
+                    <p>Se sei vittima, testimone o anche se hai agito da bullo e vuoi cambiare, questa è la sezione
+                        giusta. I docenti e la scuola intera sono qui per aiutare.</p>
+                    <p>Ricorda: denunciare non è fare la spia, è un atto di coraggio che aiuti te e gli altri. I docenti
+                        apprezzeranno la tua onestà e faranno di tutto per risolvere la situazione in modo costruttivo.
+                    </p>
+                </div>
+
+                <div class="bullying-options">
+                    <div class="bullying-option-card" role="button" tabindex="0">
+                        <div class="bullying-icon">😔</div>
+                        <h3>Sono una vittima</h3>
+                        <p>Stai subendo bullismo? Raccontaci cosa sta succedendo.</p>
+                    </div>
+                    <div class="bullying-option-card" role="button"
+                        tabindex="0">
+                        <div class="bullying-icon">👀</div>
+                        <h3>Sono un testimone</h3>
+                        <p>Hai assistito a episodi di bullismo? Segnalalo.</p>
+                    </div>
+                    <div class="bullying-option-card" role="button" tabindex="0">
+                        <div class="bullying-icon">😟</div>
+                        <h3>Mi sono comportato da bullo</h3>
+                        <p>Vuoi cambiare? Apprezziamo la tua onestà.</p>
+                    </div>
+                </div>
+
+                <div id="bullying-form" style="display: none;">
+                    <h3 id="bullying-form-title">Segnalazione Bullismo</h3>
+                    <form novalidate>
+                        <div class="form-group">
+                            <label for="bullying-description">Racconta cosa è successo:</label>
+                            <textarea id="bullying-description" class="form-control" rows="5"
+                                placeholder="Descrivi l'episodio in dettaglio..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="bullying-frequency">Quante volte è successo?</label>
+                            <select id="bullying-frequency" class="form-control">
+                                <option value="">Seleziona...</option>
+                                <option value="once">Una volta</option>
+                                <option value="few">Poche volte</option>
+                                <option value="often">Spesso</option>
+                                <option value="daily">Quasi ogni giorno</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bullying-involved">Chi è coinvolto? (nomi, se li conosci)</label>
+                            <input type="text" id="bullying-involved" class="form-control"
+                                placeholder="Nomi delle persone coinvolte...">
+                        </div>
+                        <div class="form-group">
+                            <label for="bullying-date">Data dell'episodio (se ricordi):</label>
+                            <input type="date" id="bullying-date" class="form-control">
+                        </div>
+                        <button type="button" class="btn btn-primary">Invia
+                            Segnalazione</button>
+                    </form>
+                </div>
+
+                <div id="bullying-thanks" style="display: none; text-align: center; padding: 2rem;">
+                    <h2>Grazie per la tua segnalazione</h2>
+                    <p>La tua segnalazione è stata inviata. I docenti prenderanno provvedimenti e ti aiuteranno.</p>
+                    <p>Ricorda: denunciare è un atto di coraggio che aiuta te e gli altri.</p>
+                    <button class="btn btn-primary">Torna alla Home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: Contact Page -->
+    <div id="contact-page" class="dashboard">
+        <div class="dashboard-header">
+            <div class="dashboard-header-content">
+                <h1>📧 Contattaci</h1>
+                <p>Hai bisogno di aiuto? Scrivici e ti risponderemo al più presto</p>
+            </div>
+        </div>
+        <div class="dashboard-content">
+            <div class="content-area">
+                <div class="section-header">
+                    <h2>Supporto Union</h2>
+                    <p class="subtitle">Inviaci una segnalazione o una richiesta di supporto</p>
+                </div>
+
+                <div class="contact-form">
+                    <form novalidate>
+                        <div class="form-group">
+                            <label for="contact-name">Nome *</label>
+                            <input type="text" id="contact-name" class="form-control" placeholder="Il tuo nome"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-surname">Cognome *</label>
+                            <input type="text" id="contact-surname" class="form-control" placeholder="Il tuo cognome"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email *</label>
+                            <input type="email" id="contact-email" class="form-control"
+                                placeholder="la.tua.email@esempio.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-subject">Oggetto *</label>
+                            <select id="contact-subject" class="form-control" required>
+                                <option value="">Seleziona un oggetto...</option>
+                                <option value="technical">Problema tecnico</option>
+                                <option value="account">Problema account</option>
+                                <option value="billing">Fatturazione</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Altro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Messaggio *</label>
+                            <textarea id="contact-message" class="form-control" rows="5"
+                                placeholder="Descrivi il problema o la richiesta..." required></textarea>
+                        </div>
+                        <button type="button" class="btn btn-primary">Invia
+                            Messaggio</button>
+                    </form>
+                </div>
+
+                <div id="contact-thanks" style="display: none; text-align: center; padding: 2rem;">
+                    <h2>Grazie per averci contattato</h2>
+                    <p>Il tuo messaggio è stato inviato. Ti risponderemo all'indirizzo email fornito al più presto.</p>
+                    <p>Il team di Union</p>
+                    <button class="btn btn-primary">Torna alla Home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: Teacher Contact Modal -->
+    <div id="contactTeacherModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-header">
+                <h2>📧 Scrivi al Docente</h2>
+                <p>Invia un messaggio al tuo docente per chiarire dubbi</p>
+            </div>
+            <div class="contact-teacher-form">
+                <form novalidate>
+                    <div class="form-group">
+                        <label for="teacher-select">Seleziona Docente</label>
+                        <select id="teacher-select" class="form-control">
+                            <option value="rossi">Prof. Rossi - Matematica</option>
+                            <option value="bianchi">Prof. Bianchi - Italiano</option>
+                            <option value="verdi">Prof. Verdi - Scienze</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-subject">Oggetto</label>
+                        <input type="text" id="teacher-subject" class="form-control"
+                            placeholder="Oggetto del messaggio...">
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-message">Messaggio</label>
+                        <textarea id="teacher-message" class="form-control" rows="5"
+                            placeholder="Scrivi il tuo messaggio..."></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary">Invia
+                        Messaggio</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Recording Modal -->
+    <div id="enhancedRecordingModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-header">
+                <h2>🎤 Registrazione Audio Avanzata</h2>
+                <p>Registra, trascrivi e organizza i tuoi contenuti vocali</p>
+            </div>
+
+            <div class="recording-interface">
+                <div class="waveform" id="waveform">
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                </div>
+
+                <button class="record-button" id="recordButton">
+                    🎤
+                </button>
+
+                <div class="recording-controls">
+                    <button class="control-button stop" id="stopButton" disabled>⏹️
+                        Stop</button>
+                    <button class="control-button resume" id="resumeButton" disabled>▶️
+                        Riprendi</button>
+                </div>
+
+                <div class="demo-actions">
+                    <button class="demo-btn demo-btn-primary">💾 Salva Registrazione</button>
+                    <button class="demo-btn demo-btn-primary">📝 Trascrivi
+                        Audio</button>
+                    <button class="demo-btn demo-btn-primary">📋 Genera
+                        Riassunto</button>
+                </div>
+
+                <div class="transcription-area" id="transcriptionArea">
+                    <div class="transcription-text" id="transcriptionText">
+                        La trascrizione apparirà qui...
+                        <span class="typing-cursor"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Demo Modal -->
+    <div id="demoModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-header">
+                <h2 id="demoTitle">Demo Funzionalità</h2>
+                <p id="demoDescription">Esplora questa funzionalità di Union</p>
+            </div>
+            <div id="demoContent">
+                <!-- Il contenuto della demo verrà inserito qui dinamicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Authorization Popup -->
+    <div id="authorizationPopup" class="authorization-popup">
+        <div class="authorization-content">
+            <div class="authorization-icon">🔒</div>
+            <h2>Autorizzazione Richiesta</h2>
+            <p>Per utilizzare questa funzionalità, è necessario concedere l'accesso al microfono.</p>
+            <div class="demo-actions">
+                <button class="demo-btn demo-btn-primary">Consenti Accesso</button>
+                <button class="demo-btn">Annulla</button>
+            </div>
+        </div>
+    </div>
+
+    
+
+</div>
