@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,4 +9,13 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent {}
+export class LoginComponent {
+  constructor(private readonly router: Router) {}
+
+  entra(): void {
+    // Naviga verso una rotta definita (NON verso un file fisico)
+    //this.router.navigateByUrl('/student');
+    // In alternativa:
+     this.router.navigate(['/student']);
+  }
+}
